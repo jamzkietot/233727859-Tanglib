@@ -1,24 +1,180 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="stylesheet" href="jam.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            background-color: black;
+            overflow-x: hidden;
+            overflow-y: auto; 
+            height: 100vh; 
+        }
+
+        .container {
+            position: relative;
+            height: auto; 
+            min-height: 100vh; 
+        }
+
+        .video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        h1.name {
+            margin: 0;
+            padding-top: 20px;
+            font-size: 3rem;
+            letter-spacing: 5px;
+        }
+
+        .about-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+        }
+
+        .info {
+            display: none; 
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            margin: 20px auto;
+            border-radius: 10px;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .info p {
+            margin: 10px 0;
+        }
+
+        .info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info li {
+            margin: 5px 0;
+        }
+
+        .info img {
+            width: 80%; 
+            max-width: 300px; 
+            border-radius: 10px;
+            margin: 20px auto;
+            display: block; 
+        }
+
+        .info .about-me, .info .skills, .info .hobbies {
+            margin-top: 20px;
+        }
+    </style>
+</head>
 <body>
+    <div class="container">
+    
+        <video autoplay muted loop preload="auto" class="video">
+            <source src="smoke.mp4" type="video/mp4">
+        </video>
 
-    <img src="https://uc-bcf.instructure.com/users/44739/files/8446906/preview?verifier=wEu2mBErjwKNRnG5in3niFaYu1E8D4fodW1RDkaH" 
-         style="width: 300px; height: auto;">
+        
+        <h1 class="name" id="name">
+            <span>J</span>
+            <span>A</span>
+            <span>M</span>
+            <span>M</span>
+            <span>Y</span>
+            <span>&nbsp;</span>
+            <span>T</span>
+            <span>A</span>
+            <span>N</span>
+            <span>G</span>
+            <span>L</span>
+            <span>I</span>
+            <span>B</span>
+        </h1>
 
-<h1 style="color:DodgerBlue;">My Resume</h1>
+        
+        <div class="about-btn">
+            <button id="about-btn">ABOUT ME</button>
+        </div>
 
-<p style="color:Tomato;">Hello Everyone, My name is Jammmy Tanglib I am 18 years old and I'm from Lepanto Paco Mankayan. I choose this course because this is one of my dreams to achieve in the future and I want to be a future Web Developer and this is also on demand works here in the Philippines. As an IT student my expectation in this course is to gain a solid understanding of programming languages.</p>
+        
+        <div class="info" id="info">
+            <img src="https://scontent.fmnl17-2.fna.fbcdn.net/v/t1.15752-9/474525426_1932425797286532_2830903618079565817_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeH3rrS3PuufU2hOyi8kEX17TdYWDe_NqC5N1hYN782oLiWtQ4WwEmYxtyhbCe-wBAl4SAYeE2ieIWx_H5js3Hi3&_nc_ohc=By-h0Wr7qgQQ7kNvgGs31nv&_nc_oc=AdgK_wezPkugoDjiagTZxSR498Nf_dqTxhG2qUCWx1PtuUIjoVIGyT3UlJjMZWUftkY&_nc_zt=23&_nc_ht=scontent.fmnl17-2.fna&oh=03_Q7cD1gEi06zfckrF-A1EFnz_3ieKQAC0ejvxD1kwx6qXvcwq9w&oe=67BCFB82" alt="Jammy Tanglib's Picture">
 
-<p style="color:Tomato;">Being the youngest child in my family, I have been fortunate to have supportive parents named Jone and Arlene. In addition to my academic pursuits, I am deeply passionate about basketball. The sport brings me joy, challenges me physically, and allows me to experience the thrill of teamwork and competition. Playing basketball is not only a hobby but also a source of personal growth. The goal in my life is to finish my studies and to become successful.</p>
+            <div class="about-me">
+                <p><strong>About Me</strong></p>
+                Hello, I am an Information Technology student with a strong passion for technology, seeking to apply my skills and knowledge in web development and network security. I am pursuing a career in these fields, as they are in high demand in the Philippines. Throughout my studies, I have focused on developing a solid understanding of programming languages, web development principles, and network security practices. I am eager to contribute my abilities to a professional environment, aiming to create secure and innovative web solutions. I am confident that my academic background and passion for technology will enable me to make a meaningful impact in the industry.
 
-<h2 style="color:DodgerBlue;">Hobbies/Interests</h2>
-<ul>
-    <li style="color:Tomato;">Basketball</li>
-    <li style="color:Tomato;">Billiards</li>
-    <li style="color:Tomato;">Watching Movies</li>
-    <li style="color:Tomato;">Playing Online Games</li>
-    <li style="color:Tomato;">Reading</li>
-</ul>
+            </p>
+            </div>
 
+            <div class="skills">
+                <p><strong>Skills:</strong></p>
+                <ul>
+                    <li><strong>Web Development:</strong> HTML, CSS</li>
+                    <li><strong>Programming Languages:</strong> Python</li>
+                    <li><strong>Database Management:</strong> Basic knowledge of SQL</li>
+                    <li><strong>Networking:</strong> Basic understanding of TCP/IP</li>
+                    <li><strong>Problem-Solving:</strong> Logical thinking and troubleshooting</li>
+                    <li><strong>Communication:</strong> Effective verbal and written skills</li>
+                    <li><strong>Time Management:</strong> Ability to prioritize and manage tasks</li>
+                </ul>
+            </div>
+
+            <div class="hobbies">
+                <p><strong>Hobbies & Interests:</strong></p>
+                <ul>
+                    <li>Basketball</li>
+                    <li>Billiards</li>
+                    <li>Watching Movies</li>
+                    <li>Playing Online Games</li>
+                    <li>Reading</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        document.getElementById('about-btn').addEventListener('click', function() {
+            const infoSection = document.getElementById('info');
+            const nameSection = document.getElementById('name');
+            const currentDisplay = infoSection.style.display;
+
+            
+            if (currentDisplay === 'none' || currentDisplay === '') {
+                infoSection.style.display = 'block';
+                nameSection.style.display = 'none'; 
+            } else {
+                infoSection.style.display = 'none';
+                nameSection.style.display = 'block'; 
+            }
+        });
+    </script>
 </body>
 </html>
