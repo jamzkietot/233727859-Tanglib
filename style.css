@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    z-index: -1; 
+    filter: blur(2px); 
+    opacity: 0.8; 
+    animation: moveSmoke 8s linear infinite; 
+}
+
+@keyframes moveSmoke {
+    0% {
+        transform: translateX(-10%);
+    }
+    50% {
+        transform: translateX(10%);
+    }
+    100% {
+        transform: translateX(-10%);
+    }
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    position: absolute;
+    color: #f5f5f5;
+    font-size: 5em;
+    letter-spacing: 1rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: sans-serif;
+    animation: fadeInText 2s ease-in-out forwards, pulseEffect 3s infinite; 
+    opacity: 0;
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseEffect {
+    0%, 100% {
+        text-shadow: 0 0 10px #ffffff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+    }
+    50% {
+        text-shadow: 0 0 20px #ffffff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+    }
+}
+
+h1 span {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeInLetter 2s ease-in-out forwards; 
+}
+
+@keyframes fadeInLetter {
+    0% {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+h1 span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+h1 span:nth-child(2) {
+    animation-delay: 0s;
+}
+
+h1 span:nth-child(3) {
+    animation-delay: 0s;
+}
+
+h1 span:nth-child(4) {
+    animation-delay: 0s;
+}
+
+h1 span:nth-child(5) {
+    animation-delay: 0s;
+}
+
+h1 span:nth-child(6) {
+    animation-delay: 0s;
+}
+
+h1 span:nth-child(7) {
+    animation-delay: 0s;
+}
+
+h1 span:nth-child(8) {
+    animation-delay: 0s;
+}
+
+h1 span:nth-child(9) {
+    animation-delay: 0s;
+}
+
+h1 span:nth-child(10) {
+    animation-delay: 0s;
+}
+
+h1 span:nth-child(11) {
+    animation-delay: 0s;
+}
+
+h1 span:nth-child(12) {
+    animation-delay: 0s;
+}
+
+h1 span:nth-child(13) {
+    animation-delay: 0s;
+}
+
+.about-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
