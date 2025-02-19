@@ -111,8 +111,8 @@ header nav ul li a:hover {
 .about {
     padding: 60px 20px;
     text-align: center;
-    background-color: #000; /* Set background to black */
-    color: white; /* Set text color to white */
+    background-color: #000;
+    color: white;
     opacity: 0;
     animation: fadeIn 1s ease-out forwards 0.5s;
 }
@@ -134,7 +134,7 @@ header nav ul li a:hover {
     background-color: black;
     padding: 60px 20px;
     text-align: center;
-    color: white; /* Set text color to white */
+    color: white;
     opacity: 0;
     animation: fadeIn 1s ease-out forwards 0.5s;
 }
@@ -142,13 +142,11 @@ header nav ul li a:hover {
 .services h2 {
     font-size: 2.5rem;
     margin-bottom: 30px;
-    color: white; /* Ensure the heading text is white */
 }
 
 .service-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     opacity: 0;
     animation: fadeIn 1s ease-out forwards 1s;
@@ -158,7 +156,6 @@ header nav ul li a:hover {
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 300px;
     text-align: center;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -178,13 +175,31 @@ header nav ul li a:hover {
 .service-card h3 {
     font-size: 1.8rem;
     margin-bottom: 10px;
-    color: black; /* Heading color remains black */
+    color: black;
 }
 
 .service-card p {
     font-size: 1rem;
     margin-bottom: 5px;
-    color: black; /* Paragraph text inside each card remains black */
+    color: black;
+}
+
+/* Buy Now Button */
+.buy-now {
+    background-color: #ff9900;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 10px;
+}
+
+.buy-now:hover {
+    background-color: #e68a00;
+    transform: scale(1.05);
 }
 
 /* Contact Section */
@@ -192,7 +207,7 @@ header nav ul li a:hover {
     background-color: black;
     padding: 60px 20px;
     text-align: center;
-    color: white; /* Set text color to white */
+    color: white;
     opacity: 0;
     animation: fadeIn 1s ease-out forwards 0.5s;
 }
@@ -246,8 +261,8 @@ button:hover {
 
 /* Footer Section */
 footer {
-    background-color: #000; /* Black background */
-    color: white; /* White text for readability */
+    background-color: #000;
+    color: white;
     padding: 20px 0;
     text-align: center;
 }
@@ -257,7 +272,6 @@ footer .footer-content {
 }
 
 footer p {
-    font-size: 1rem;
     margin-bottom: 10px;
 }
 
@@ -267,23 +281,21 @@ footer .social-links {
     gap: 20px;
 }
 
+footer .social-links li {
+    display: inline;
+}
+
 footer .social-links li a {
     color: white;
     font-size: 1.2rem;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 footer .social-links li a:hover {
     color: #ff9900;
-    transform: scale(1.1);
 }
 
-/* Scroll effects */
-.scrolled header {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Animations */
+/* Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -301,5 +313,18 @@ footer .social-links li a:hover {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .service-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .service-cards {
+        grid-template-columns: 1fr;
     }
 }
