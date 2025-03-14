@@ -83,7 +83,7 @@ function square($number) {
     return $number * $number;
 }
 
-echo greet("Sir JAM") . "<br>";
+echo greet("Jammy") . "<br>";
 echo "Square of 144: " . square(144) . "<br>";
 ?>
 
