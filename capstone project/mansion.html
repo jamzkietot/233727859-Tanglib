@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Mansion | Baguio Track</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: #f8efe2;
+      color: #333;
+    }
+
+    /* HEADER */
+    header {
+      background-color: #154d2e;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    header h2 {
+      margin: 0;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: #f2d7b5;
+    }
+
+    main {
+      padding: 0 60px 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* HERO */
+    .hero-text {
+      text-align: center;
+      color: #154d2e;
+      animation: fadeIn 1.5s ease-in-out;
+      margin-top: 100px;
+      margin-bottom: 40px;
+    }
+
+    .hero-text h1 {
+      font-size: 34px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(237, 237, 235, 0.2);
+      margin-bottom: 10px;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h3 {
+      color: #154d2e;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    p, li {
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    ul { list-style: none; padding-left: 0; }
+
+    li { margin-bottom: 5px; }
+
+    iframe {
+      width: 100%;
+      height: 350px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .back-btn, .direction-btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: #154d2e;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s;
+      margin-right: 10px;
+    }
+
+    .back-btn:hover, .direction-btn:hover {
+      background: #1a693a;
+    }
+
+    footer {
+      text-align: center;
+      background: #154d2e;
+      color: #fff;
+      padding: 12px 0;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 768px) {
+      main { padding: 0 25px 60px; }
+      .hero-text h1 { font-size: 26px; }
+      .hero-text p { font-size: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h2>Baguio Track</h2>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="tourist.html" class="active">Tourist Spots</a>
+      <a href="#">Routes</a>
+      <a href="#">Fares</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
+
+  <!-- CONTENT -->
+  <main>
+    <div class="hero-text">
+      <h1>Explore The Mansion</h1>
+      <p>Discover the historic summer residence of the Philippine President.</p>
+    </div>
+
+    <h3>About The Mansion</h3>
+    <p>
+      <strong>The Mansion</strong> is one of the most iconic landmarks in Baguio City. 
+      Built in 1908, it currently serves as the official summer residence of the President of the Philippines. 
+      With elegant Spanish-inspired architecture, lush gardens, and grand iron gates, it is a must-visit historical attraction.
+    </p>
+
+    <h3>Visitor Information</h3>
+    <ul>
+      <li><strong>📍 Location:</strong> Leonard Wood Road, Baguio City</li>
+      <li><strong>💰 Entrance Fee:</strong> Free (Photo area only)</li>
+      <li><strong>🕕 Best Time:</strong> Morning for clearer views & cooler weather</li>
+    </ul>
+
+    <h3>Nearby Places</h3>
+    <ul>
+      <li>🌲 Wright Park (Across the street)</li>
+      <li>☕ Amare La Cucina (2 mins drive)</li>
+      <li>🏞 Camp John Hay (5 mins drive)</li>
+    </ul>
+
+    <h3>Map Location</h3>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.311608820174!2d120.61543587507198!3d16.417221184306384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1a1d899340f3%3A0x66b040b643537454!2sThe%20Mansion!5e0!3m2!1sen!2sph!4v1730112456789!5m2!1sen!2sph" loading="lazy"></iframe>
+
+    <a href="#" class="direction-btn" id="toMansion">🧭 Get Directions to The Mansion</a>
+
+    <!-- Jeepney Terminal Section -->
+    <section style="margin-top: 2rem; padding: 1rem; background: #f9fafb; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <h3>🚏 Jeepney Terminal (Wright Park – Mines View)</h3>
+      <p><strong>Location:</strong> Wright Park, across The Mansion, Baguio City</p>
+      <p><strong>Fare:</strong> ₱12.00 – ₱15.00</p>
+      <p><strong>Route:</strong> Mines View → Wright Park → The Mansion → Leonard Wood → Session Road</p>
+
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.3062333122516!2d120.61599807507207!3d16.417541184306275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1a1ddcd7cb69%3A0x782fcd45b50d45c2!2sWright%20Park%20Jeepney%20Terminal!5e0!3m2!1sen!2sph!4v1730113000001!5m2!1sen!2sph" height="300" style="border:0; border-radius: 8px;" loading="lazy"></iframe>
+
+      <a href="#" id="toTerminal" class="direction-btn">🚐 Jeepney Terminal Directions</a>
+      <a href="#" id="continueTrip" class="direction-btn">🏛 Continue Trip to The Mansion</a>
+    </section>
+
+    <a href="tourist.html" class="back-btn">← Back to Tourist Spots</a>
+  </main>
+
+  <footer>
+    <p>© 2025 Baguio Track | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const mansionLat = 16.4172211;
+    const mansionLng = 120.6154358;
+    const terminalLat = 16.4175411;
+    const terminalLng = 120.6159980;
+
+    document.getElementById("toMansion").addEventListener("click", function(e) {
+      e.preventDefault();
+      navigator.geolocation.getCurrentPosition(pos => {
+        window.open(`https://www.google.com/maps/dir/?api=1&origin=${pos.coords.latitude},${pos.coords.longitude}&destination=${mansionLat},${mansionLng}`);
+      }, () => alert("Enable location to get directions."));
+    });
+
+    document.getElementById("toTerminal").addEventListener("click", function(e) {
+      e.preventDefault();
+      navigator.geolocation.getCurrentPosition(pos => {
+        window.open(`https://www.google.com/maps/dir/?api=1&origin=${pos.coords.latitude},${pos.coords.longitude}&destination=${terminalLat},${terminalLng}`);
+      }, () => alert("Enable location to get directions."));
+    });
+
+    document.getElementById("continueTrip").addEventListener("click", function(e) {
+      e.preventDefault();
+      window.open(`https://www.google.com/maps/dir/?api=1&origin=${terminalLat},${terminalLng}&destination=${mansionLat},${mansionLng}`);
+    });
+  </script>
+</body>
+</html>

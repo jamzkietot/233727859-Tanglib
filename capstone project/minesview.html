@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mines View Park | Baguio Track</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: #f8efe2;
+      color: #333;
+    }
+
+    /* HEADER */
+    header {
+      background-color: #154d2e;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    header h2 {
+      margin: 0;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: #f2d7b5;
+    }
+
+    main {
+      padding: 0 60px 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* HERO SECTION */
+    .hero-text {
+      text-align: center;
+      color: #154d2e;
+      animation: fadeIn 1.5s ease-in-out;
+      margin-top: 100px;
+      margin-bottom: 40px;
+    }
+
+    .hero-text h1 {
+      font-size: 34px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(237, 237, 235, 0.2);
+      margin-bottom: 10px;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #555;
+      font-weight: 400;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h3 {
+      color: #154d2e;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    p, li {
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    strong {
+      color: #154d2e;
+    }
+
+    iframe {
+      width: 100%;
+      height: 350px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .back-btn, .direction-btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: #154d2e;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 15px;
+      transition: background 0.3s;
+      margin-right: 10px;
+    }
+
+    .back-btn:hover, .direction-btn:hover {
+      background: #1a693a;
+    }
+
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #154d2e;
+      color: #fff;
+      padding: 12px 0;
+      font-size: 14px;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        padding: 0 25px 60px;
+      }
+      .hero-text h1 {
+        font-size: 26px;
+      }
+      .hero-text p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h2>Baguio Track</h2>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="tourist.html" class="active">Tourist Spots</a>
+      <a href="#">Routes</a>
+      <a href="#">Fares</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero-text">
+      <h1>Witness the Scenic Beauty of Mines View Park</h1>
+      <p>Enjoy breathtaking panoramic views of Benguet's mountains and valleys.</p>
+    </div>
+
+    <h3>About Mines View Park</h3>
+    <p>
+      <strong>Mines View Park</strong> is one of Baguio's most iconic viewing spots, offering a sweeping
+      view of the old mining town of Itogon and the majestic Cordillera mountains. 
+      Enjoy photo ops, horseback riding, souvenir stalls, and local delicacies.
+    </p>
+
+    <h3>Visitor Information</h3>
+    <ul>
+      <li><strong>📍 Location:</strong> Mines View Road, Baguio City</li>
+      <li><strong>💰 Entrance Fee:</strong> ₱10 (as of 2025)</li>
+      <li><strong>🕕 Opening Hours:</strong> 6:00 AM – 8:00 PM</li>
+    </ul>
+
+    <h3>Nearby Restaurants & Attractions</h3>
+    <ul>
+      <li>🥤 <strong>Good Shepherd Convent</strong> – Famous Ube Jam (2 mins)</li>
+      <li>🍽️ Local Souvenir Stalls</strong> – Silverworks, weaves, food pasalubong</li>
+      <li>🐴 Horseback Riding Area</strong> near the entrance</li>
+    </ul>
+
+    <h3>Map Location</h3>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.248805740407!2d120.623297475072!3d16.4208905843023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1a4cb249bd7d%3A0x1b5f39fa908db8b3!2sMines%20View%20Park!5e0!3m2!1sen!2sph!4v1730250000000!5m2!1sen!2sph"></iframe>
+
+    <a href="#" class="direction-btn" id="toMines">🧭 Get Directions to Mines View Park</a>
+
+    <!-- Jeepney Terminal Section -->
+    <section id="jeepney-terminal" style="margin-top: 2rem; padding: 1rem; background: #f9fafb; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <h3>🚏 Jeepney Terminal (Pacdal–Mines View)</h3>
+      <p><strong>Location:</strong> Assumption Road, near Burnham Park, beside Holy Family College</p>
+      <p><strong>Fare Rate:</strong> ₱12.00 – ₱15.00</p>
+      <p><strong>Route:</strong> Session Road → Leonard Wood Road → Botanical Garden → Pacdal Circle → Mines View Park</p>
+
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.403406391172!2d120.59776137507166!3d16.411907884307037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1a0c5ee98ef1%3A0xcce147cbe51526b9!2sPacdal%20-%20Mines%20View%20Jeepney%20Terminal!5e0!3m2!1sen!2sph!4v1730111111111!5m2!1sen!2sph"></iframe>
+
+      <a href="#" id="toTerminal" class="direction-btn">🚐 Get Directions to Jeepney Terminal</a>
+      <a href="#" id="continueTrip" class="direction-btn">⛰️ Continue Trip to Mines View Park</a>
+    </section>
+
+    <a href="tourist.html" class="back-btn">← Back to Tourist Spots</a>
+  </main>
+
+  <footer>
+    <p>© 2025 Baguio Track | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const minesLat = 16.4208906;
+    const minesLng = 120.6232975;
+    const terminalLat = 16.4119078;
+    const terminalLng = 120.5977613;
+
+    document.getElementById("toMines").addEventListener("click", function(e) {
+      e.preventDefault();
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(pos) {
+          const { latitude, longitude } = pos.coords;
+          window.open(`https://www.google.com/maps/dir/?api=1&origin=${latitude},${longitude}&destination=${minesLat},${minesLng}&travelmode=driving`);
+        });
+      }
+    });
+
+    document.getElementById("toTerminal").addEventListener("click", function(e) {
+      e.preventDefault();
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(pos) {
+          const { latitude, longitude } = pos.coords;
+          window.open(`https://www.google.com/maps/dir/?api=1&origin=${latitude},${longitude}&destination=${terminalLat},${terminalLng}&travelmode=driving`);
+        });
+      }
+    });
+
+    document.getElementById("continueTrip").addEventListener("click", function(e) {
+      e.preventDefault();
+      window.open(`https://www.google.com/maps/dir/?api=1&origin=${terminalLat},${terminalLng}&destination=${minesLat},${minesLng}&travelmode=driving`);
+    });
+  </script>
+
+</body>
+</html>
