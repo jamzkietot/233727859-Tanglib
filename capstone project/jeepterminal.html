@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jeepney Terminals | Baguio Track</title>
+
+<style>
+/* GLOBAL DESIGN */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f6f3ea;
+  color: #2c2c2c;
+}
+
+header {
+  background: #145532;
+  color: #fff;
+  padding: 14px 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+nav a {
+  color: white;
+  margin-left: 25px;
+  font-weight: 500;
+}
+nav a.active,
+nav a:hover {
+  color: #e8d9ac;
+}
+
+/* MAIN WRAPPER */
+main {
+  max-width: 1150px;
+  margin: 25px auto;
+  padding: 0 18px;
+}
+
+/* TITLES */
+.title {
+  font-size: 34px;
+  font-weight: 700;
+  color: #154d2e;
+  margin-bottom: 5px;
+}
+.subtitle {
+  font-size: 15px;
+  color: #666;
+  margin-top: -5px;
+}
+
+/* SEARCH BAR */
+.search-box {
+  margin: 25px 0;
+}
+.search-box input {
+  width: 68%;
+  padding: 11px 15px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.search-box button {
+  padding: 11px 15px;
+  background: #145532;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+.search-box button:hover {
+  background: #1f7748;
+}
+
+/* TABLE */
+.terminal-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.terminal-table th {
+  background: #e7e2d3;
+  color: #154d2e;
+  padding: 14px;
+  text-align: left;
+  font-size: 15px;
+}
+.terminal-table td {
+  padding: 14px;
+  border-bottom: 1px solid #ddd;
+  font-size: 15px;
+}
+.terminal-table tr:hover {
+  background: #faf9f7;
+}
+
+/* CARD STYLE (Matches 2nd screenshot look) */
+.card {
+  margin-top: 30px;
+  padding: 22px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+.card h3 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #154d2e;
+}
+.card p {
+  margin: 5px 0;
+  font-size: 15px;
+}
+
+/* MAP */
+.map-container {
+  margin-top: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 18px;
+  background: #145532;
+  color: white;
+  border-radius: 6px;
+}
+.btn:hover {
+  background: #1e7445;
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <h2>Baguio Track</h2>
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="tourist.html">Tourist Spots</a>
+    <a class="active">Terminals</a>
+    <a href="#">Routes</a>
+    <a href="#">Fares</a>
+  </nav>
+</header>
+
+<main>
+
+  <h1 class="title">Jeepney Terminals & Routes</h1>
+  <p class="subtitle">Find terminal locations and routes to navigate Baguio City.</p>
+
+  <!-- SEARCH -->
+  <div class="search-box">
+    <input type="text" placeholder="Search terminal or destination…">
+    <button>🔎 Search</button>
+  </div>
+
+  <!-- TERMINAL TABLE -->
+  <table class="terminal-table">
+    <thead>
+      <tr>
+        <th>Terminal Name</th>
+        <th>Address / Landmark</th>
+        <th>Common Destinations</th>
+        <th>Operating Hours</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><strong>Baguio Central Terminal</strong></td>
+        <td>Leonard Wood Rd., near Burnham Park</td>
+        <td>La Trinidad, Atok, Benguet Market</td>
+        <td>05:00 AM – 10:00 PM</td>
+      </tr>
+
+      <tr>
+        <td><strong>Slaughter House Terminal</strong></td>
+        <td>Gov. Pack Rd., Slaughter House</td>
+        <td>Kias, Asin, Tublay, Bokod</td>
+        <td>05:30 AM – 08:00 PM</td>
+      </tr>
+
+      <tr>
+        <td><strong>SM Baguio Jeepney Terminal</strong></td>
+        <td>SM Baguio, Harrison Road</td>
+        <td>Mines View, Wright Park</td>
+        <td>07:00 AM – 09:00 PM</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- BOTANICAL GARDEN ROUTE CARD -->
+  <div class="card">
+    <h3>🌿 Jeepney Route: Botanical Garden → Pacdal Terminal → Mines View</h3>
+
+    <p><strong>Location:</strong> Botanical Garden, Leonard Wood Road, Baguio City</p>
+    <p><strong>Fare Rate:</strong> ₱12.00 – ₱15.00</p>
+    <p><strong>Route:</strong> Botanical Garden → Pacdal Circle → Mines View Park</p>
+
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d966.9936095178726!2d120.613691!3d16.415307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3391a144c71e80d1%3A0x7d90713b8bfdcf7e!2sBotanical%20Garden%20(Baguio)!5e0!3m2!1sen!2sph!4v1700000000000"
+        width="100%" height="330" style="border:0;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+
+    <a class="btn" href="#">View on Map</a>
+  </div>
+
+</main>
+
+</body>
+</html>
