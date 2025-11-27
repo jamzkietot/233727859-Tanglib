@@ -5,114 +5,155 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Good Shepherd Convent | Baguio Track</title>
   <style>
+    /* GENERAL */
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      background-color: #f8efe2;
-      color: #333;
+      background: #f3ebdb;
+      color: #2c2c2c;
     }
+
+    a { text-decoration: none; }
 
     /* HEADER */
     header {
-      background-color: #154d2e;
+      background: #145532;
       color: #fff;
+      padding: 12px 45px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 50px;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
     }
 
     header h2 {
       margin: 0;
+      font-size: 22px;
+      font-weight: 600;
     }
 
     nav a {
       color: #fff;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 600;
-      transition: color 0.3s;
+      margin-left: 25px;
+      font-weight: 500;
     }
 
-    nav a:hover, nav a.active {
-      color: #f2d7b5;
+    nav a:hover,
+    nav a.active {
+      color: #d8c7a0;
     }
 
+    /* MAIN */
     main {
-      padding: 0 60px 60px;
-      max-width: 1100px;
-      margin: 0 auto;
+      max-width: 1280px;
+      margin: 25px auto;
+      padding: 0 20px;
     }
 
-    .hero-text {
-      text-align: center;
-      color: #154d2e;
-      animation: fadeIn 1.5s ease-in-out;
-      margin-top: 100px;
-      margin-bottom: 40px;
+    /* TOP GRID */
+    .top-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 25px;
+      margin-bottom: 25px;
     }
 
-    .hero-text h1 {
-      font-size: 34px;
-      font-weight: 700;
-      text-shadow: 2px 2px 4px rgba(237, 237, 235, 0.2);
-      margin-bottom: 10px;
-    }
-
-    .hero-text p {
-      font-size: 18px;
-      color: #555;
-      font-weight: 400;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h3 {
-      color: #154d2e;
-      margin-top: 30px;
-      margin-bottom: 10px;
-    }
-
-    p, li {
-      line-height: 1.7;
-      text-align: justify;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    li {
-      margin-bottom: 5px;
-    }
-
-    strong {
-      color: #154d2e;
-    }
-
-    iframe {
+    /* IMAGE */
+    .hero-side-img {
       width: 100%;
-      height: 350px;
-      border: none;
-      border-radius: 10px;
-      margin-top: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      height: 330px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .back-btn, .direction-btn {
+    .hero-side-img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+    }
+
+    /* IMAGE POPUP (LIGHTBOX) */
+    #imgPopup {
+      display: none;
+      position: fixed;
+      z-index: 3000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(3px);
+      justify-content: center;
+      align-items: center;
+    }
+
+    #imgPopup img {
+      width: 90%;
+      max-width: 900px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    #closePopup {
+      position: fixed;
+      top: 25px;
+      right: 40px;
+      font-size: 38px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* CARDS */
+    .card {
+      background: #ffffff;
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #154d2e;
+    }
+
+    /* TITLES */
+    .title {
+      font-size: 32px;
+      color: #154d2e;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    .subtitle {
+      margin-top: -5px;
+      font-size: 15px;
+      color: #666;
+    }
+
+    /* MAP */
+    .map-card iframe {
+      border-radius: 10px;
+      width: 100%;
+      height: 320px;
+      border: none;
+    }
+
+    /* BUTTONS */
+    .back-btn,
+    .direction-btn {
       display: inline-block;
       margin-top: 20px;
-      background: #154d2e;
+      background: #145532;
       color: #fff;
-      padding: 10px 18px;
+      padding: 10px 14px;
       border-radius: 6px;
       text-decoration: none;
       font-size: 15px;
@@ -121,114 +162,112 @@
     }
 
     .back-btn:hover, .direction-btn:hover {
-      background: #1a693a;
+      background: #187842;
     }
 
-    footer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #154d2e;
-      color: #fff;
-      padding: 12px 0;
-      font-size: 14px;
-      margin-top: 50px;
-      text-align: center;
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    @media (max-width: 900px) {
+      .grid, .top-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-side-img {
+        height: 250px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h2>Baguio Track</h2>
-    <nav>
-      <a href="home.html">Home</a>
-      <a href="tourist.html" class="active">Tourist Spots</a>
-      <a href="#">Routes</a>
-      <a href="#">Fares</a>
-      <a href="#">About</a>
-    </nav>
-  </header>
 
-  <main>
-    <div class="hero-text">
-      <h1>Good Shepherd Convent</h1>
-      <p>Home of Baguio’s famous ube jam and a place of peace & charity.</p>
+<header>
+  <h2>Baguio Track</h2>
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="tourist.html" class="active">Tourist Spots</a>
+    <a href="#">Routes</a>
+    <a href="#">Fares</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- TOP SECTION -->
+  <div class="top-grid">
+
+    <!-- CLICKABLE IMAGE -->
+    <img src="goods.jpg" class="hero-side-img" id="openImage" alt="Good Shepherd Convent">
+
+    <div class="card">
+      <h3>Visitor Information</h3>
+      <p><strong>📍 Location:</strong> Outlook Drive, Baguio City</p>
+      <p><strong>🕕 Operating Hours:</strong> 8:00 AM – 4:00 PM</p>
+      <p><strong>💰 Entry Fee:</strong> Free</p>
+      <p><strong>🎁 Famous For:</strong> Ube Jam, Strawberry Jam, Peanut Brittle</p>
+    </div>
+  </div>
+
+  <h1 class="title">Visit the Good Shepherd Convent</h1>
+  <p class="subtitle">Home of Baguio’s famous ube jam and a place of peace & charity.</p>
+
+  <div class="grid">
+
+    <div>
+      <div class="card">
+        <h3>About Good Shepherd</h3>
+        <p>
+          The <strong>Good Shepherd Convent</strong> is famous for its delicious local products such as ube jam, strawberry jam, and peanut brittle. Every purchase helps support the education of Cordillera youth.
+        </p>
+      </div>
+
+      <!-- MAP -->
+      <div class="card map-card" id="mapLocation" style="margin-top: 20px;">
+        <h3>Map Location</h3>
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.2799545917973!2d120.616875075071!3d16.418854884304658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1cfe796938d5%3A0xaa1fd17f88d3d299!2sGood%20Shepherd%20Convent!5e0!3m2!1sen!2sph!4v1730112000000!5m2!1sen!2sph"
+          loading="lazy"></iframe>
+      </div>
     </div>
 
-    <h3>About Good Shepherd</h3>
-    <p>
-      The <strong>Good Shepherd Convent</strong> in Baguio is famous for its high-quality products 
-      such as ube jam, strawberry jam, and other local delicacies. Every purchase supports the 
-      education of Cordillera youth — making every bite meaningful.
-    </p>
+    <div>
+      <div class="card">
+        <h3>Jeepney Terminal</h3>
+        <p><strong>Location:</strong> PACDAL–MINES VIEW Jeepney Terminal, Assumption Road</p>
+        <p><strong>Fare:</strong> ₱12 – ₱15</p>
+      </div>
+    </div>
 
-    <h3>Visitor Information</h3>
-    <ul>
-      <li><strong>📍 Location:</strong> Outlook Drive, Baguio City</li>
-      <li><strong>🕕 Operating Hours:</strong> 8:00 AM – 4:00 PM</li>
-      <li><strong>💰 Entry Fee:</strong> Free</li>
-      <li><strong>🎁 Famous For:</strong> Ube Jam, Strawberry Jam, Peanut Brittle</li>
-    </ul>
+  </div>
 
-    <h3>Nearby Attractions</h3>
-    <ul>
-      <li>🏞️ Mines View Park (2 mins away)</li>
-      <li>☕ Café by the Ruins Dua (10 mins drive)</li>
-      <li>🍰 Arca’s Yard (5 mins drive)</li>
-    </ul>
+  <a href="tourist.html" class="back-btn">← Back to Tourist Spots</a>
 
-    <h3>Map Location</h3>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.2799545917973!2d120.616875075071!3d16.418854884304658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1cfe796938d5%3A0xaa1fd17f88d3d299!2sGood%20Shepherd%20Convent!5e0!3m2!1sen!2sph!4v1730112000000!5m2!1sen!2sph"></iframe>
+</main>
 
-    <a href="#" class="direction-btn" id="toGoodShepherd">🧭 Get Directions to Good Shepherd</a>
+<!-- POPUP IMAGE / LIGHTBOX -->
+<div id="imgPopup">
+  <span id="closePopup">&times;</span>
+  <img src="goods.jpg" alt="Good Shepherd Convent">
+</div>
 
-    <section style="margin-top: 2rem; padding: 1rem; background: #f9fafb; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-      <h3>🚏 Jeepney Terminal (Mines View Route)</h3>
-      <p><strong>Location:</strong> PACDAL–MINES VIEW Jeepney Terminal, Assumption Road</p>
-      <p><strong>Fare Rate:</strong> ₱12.00 – ₱15.00</p>
-      <p><strong>Route:</strong> Session Road → Leonard Wood → Pacdal Circle → Mines View → Good Shepherd</p>
+<script>
+const popup = document.getElementById("imgPopup");
+const openImg = document.getElementById("openImage");
+const closePopup = document.getElementById("closePopup");
 
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.403406391172!2d120.59776137507166!3d16.411907884307037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1a0c5ee98ef1%3A0xcce147cbe51526b9!2sPacdal%20-%20Mines%20View%20Jeepney%20Terminal!5e0!3m2!1sen!2sph!4v1730111111122!5m2!1sen!2sph" width="100%" height="300" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+openImg.onclick = () => popup.style.display = "flex";
+closePopup.onclick = () => popup.style.display = "none";
 
-      <a href="#" class="direction-btn" id="toTerminal">🚐 Get Directions to Jeepney Terminal</a>
-      <a href="#" class="direction-btn" id="continueTrip">🍠 Continue Trip to Good Shepherd</a>
-    </section>
+popup.onclick = (e) => {
+  if (e.target === popup) popup.style.display = "none";
+};
+</script>
 
-    <a href="tourist.html" class="back-btn">← Back to Tourist Spots</a>
-  </main>
-
-  <footer>
-    <p>© 2025 Baguio Track | All Rights Reserved</p>
-  </footer>
-
-  <script>
-    const goodLat = 16.4188548;
-    const goodLng = 120.6168750;
-    const terminalLat = 16.4119078;
-    const terminalLng = 120.5977613;
-
-    document.getElementById("toGoodShepherd").addEventListener("click", function(e) {
-      e.preventDefault();
-      navigator.geolocation.getCurrentPosition(
-        pos => {
-          window.open(`https://www.google.com/maps/dir/?api=1&origin=${pos.coords.latitude},${pos.coords.longitude}&destination=${goodLat},${goodLng}&travelmode=driving`);
-        },
-        () => alert("Please enable location to get directions.")
-      );
-    });
-
-    document.getElementById("toTerminal").addEventListener("click", function(e) {
-      e.preventDefault();
-      navigator.geolocation.getCurrentPosition(pos => {
-        window.open(`https://www.google.com/maps/dir/?api=1&origin=${pos.coords.latitude},${pos.coords.longitude}&destination=${terminalLat},${terminalLng}&travelmode=driving`);
-      });
-    });
-
-    document.getElementById("continueTrip").addEventListener("click", function(e) {
-      e.preventDefault();
-      window.open(`https://www.google.com/maps/dir/?api=1&origin=${terminalLat},${terminalLng}&destination=${goodLat},${goodLng}&travelmode=driving`);
-    });
-  </script>
 </body>
 </html>
