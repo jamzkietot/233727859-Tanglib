@@ -1,200 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lourdes Grotto | Baguio Track</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background-color: #f8efe2;
-      color: #333;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lourdes Grotto | Baguio Track</title>
 
-    /* HEADER */
-    header {
-      background-color: #154d2e;
-      color: #fff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 50px;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
+<style>
+/* GENERAL */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f3ebdb;
+  color: #2c2c2c;
+}
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
+a { text-decoration: none; }
 
-    nav a:hover, nav a.active {
-      color: #f2d7b5;
-    }
+/* HEADER */
+header {
+  background: #145532;
+  color: #fff;
+  padding: 12px 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    main {
-      padding: 0 60px 60px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
 
-    .hero-text {
-      text-align: center;
-      color: #154d2e;
-      animation: fadeIn 1.5s ease-in-out;
-      margin-top: 100px;
-      margin-bottom: 40px;
-    }
+nav a {
+  color: #fff;
+  margin-left: 25px;
+  font-weight: 500;
+}
 
-    .hero-text h1 {
-      font-size: 34px;
-      font-weight: 700;
-    }
+nav a:hover,
+nav a.active {
+  color: #d8c7a0;
+}
 
-    .hero-text p {
-      font-size: 18px;
-      color: #555;
-    }
+/* MAIN */
+main {
+  max-width: 1280px;
+  margin: 25px auto;
+  padding: 0 20px;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+/* TOP GRID */
+.top-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+  margin-bottom: 25px;
+}
 
-    h3 {
-      color: #154d2e;
-      margin-top: 30px;
-      margin-bottom: 10px;
-    }
+/* IMAGE */
+.hero-side-img {
+  width: 100%;
+  height: 330px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    p, li {
-      line-height: 1.7;
-      text-align: justify;
-    }
+.hero-side-img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+}
 
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
+/* IMAGE POPUP (LIGHTBOX) */
+#imgPopup {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(3px);
+  justify-content: center;
+  align-items: center;
+}
 
-    iframe {
-      width: 100%;
-      height: 350px;
-      border: none;
-      border-radius: 10px;
-      margin-top: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+#imgPopup img {
+  width: 90%;
+  max-width: 900px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  animation: zoomIn 0.3s ease;
+}
 
-    .back-btn, .direction-btn {
-      display: inline-block;
-      margin-top: 20px;
-      background: #154d2e;
-      color: #fff;
-      padding: 10px 18px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 15px;
-      transition: background 0.3s;
-      margin-right: 10px;
-    }
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 
-    .back-btn:hover, .direction-btn:hover {
-      background: #1a693a;
-    }
+#closePopup {
+  position: fixed;
+  top: 25px;
+  right: 40px;
+  font-size: 38px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    footer {
-      text-align: center;
-      background: #154d2e;
-      color: #fff;
-      padding: 12px 0;
-      font-size: 14px;
-      margin-top: 50px;
-    }
+/* CARDS */
+.card {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
 
-    @media (max-width: 768px) {
-      main { padding: 0 25px 60px; }
-      .hero-text h1 { font-size: 26px; }
-    }
-  </style>
+.card h3 {
+  margin-top: 0;
+  color: #154d2e;
+}
+
+/* TITLES */
+.title {
+  font-size: 32px;
+  color: #154d2e;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.subtitle {
+  margin-top: -5px;
+  font-size: 15px;
+  color: #666;
+}
+
+/* MAP */
+.map-card iframe {
+  border-radius: 10px;
+  width: 100%;
+  height: 320px;
+  border: none;
+}
+
+/* TWO-COL GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 14px;
+  background: #145532;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.back:hover { background: #187842; }
+
+
+@media (max-width: 900px) {
+  .grid, .top-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-side-img {
+    height: 250px;
+  }
+}
+</style>
 </head>
 
 <body>
-  <header>
-    <h2>Baguio Track</h2>
-    <nav>
-      <a href="home.html">Home</a>
-      <a href="tourist.html" class="active">Tourist Spots</a>
-      <a href="#">Routes</a>
-      <a href="#">Fares</a>
-      <a href="#">About</a>
-    </nav>
-  </header>
 
-  <main>
-    <div class="hero-text">
-      <h1>Visit the Lourdes Grotto</h1>
-      <p>A sacred pilgrimage site offering peace and city views.</p>
+<header>
+  <h2>Baguio Track</h2>
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="tourist.html" class="active">Tourist Spots</a>
+    <a href="#">Routes</a>
+    <a href="#">Fares</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- TOP SECTION -->
+  <div class="top-grid">
+
+    <!-- CLICKABLE IMAGE -->
+    <img src="lgroto.jpg" class="hero-side-img" id="openImage" alt="Lourdes Grotto">
+
+    <div class="card">
+      <h3>Visitor Information</h3>
+      <p><strong>📍 Location:</strong> Dominican Hill Road, Baguio City</p>
+      <p><strong>💰 Entrance Fee:</strong> Free</p>
+      <p><strong>🕕 Best Time to Visit:</strong> Early morning or sunset</p>
+    </div>
+  </div>
+
+  <h1 class="title">Visit the Lourdes Grotto</h1>
+  <p class="subtitle">A sacred pilgrimage site offering peace and city views.</p>
+
+  <div class="grid">
+
+    <div>
+      <div class="card">
+        <h3>About Lourdes Grotto</h3>
+        <p>
+          The <strong>Our Lady of Lourdes Grotto</strong> is a famous religious shrine in Baguio City. 
+          Visitors climb <strong>252 steps</strong> to reach the statue of the Blessed Virgin Mary. 
+          The site provides a peaceful atmosphere and an amazing view of the city.
+        </p>
+      </div>
+
+      <!-- MAP -->
+      <div class="card map-card" id="mapLocation" style="margin-top: 20px;">
+        <h3>Map Location</h3>
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.233989989168!2d120.583775!3d16.409344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1a32f3b6db5b%3A0xf133f8e09cc9b65d!2sOur%20Lady%20of%20Lourdes%20Grotto!5e0!3m2!1sen!2sph!4v1730155689211!5m2!1sen!2sph"
+          loading="lazy"></iframe>
+      </div>
     </div>
 
-    <h3>About Lourdes Grotto</h3>
-    <p>
-      The <strong>Our Lady of Lourdes Grotto</strong> is a famous religious shrine in Baguio City. 
-      Visitors climb <strong>252 steps</strong> to reach the statue of the Blessed Virgin Mary, offering 
-      prayers and lighting candles. The site provides a peaceful atmosphere and a stunning view 
-      of the city once you reach the top.
-    </p>
+    <div>
+      <div class="card">
+        <h3>Jeepney Terminal</h3>
+        <p><strong>Location:</strong> Kayang Street, near Baguio Public Market</p>
+        <p><strong>Fare:</strong> ₱12 – ₱15</p>
+      </div>
+    </div>
 
-    <h3>Visitor Information</h3>
-    <ul>
-      <li><strong>📍 Location:</strong> Dominican Hill Road, Baguio City</li>
-      <li><strong>💰 Entrance Fee:</strong> Free</li>
-      <li><strong>🕕 Best Time:</strong> Early morning or sunset</li>
-    </ul>
+  </div>
 
-    <h3>Map Location</h3>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.233989989168!2d120.583775!3d16.409344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1a32f3b6db5b%3A0xf133f8e09cc9b65d!2sOur%20Lady%20of%20Lourdes%20Grotto!5e0!3m2!1sen!2sph!4v1730155689211!5m2!1sen!2sph" loading="lazy"></iframe>
+  <a href="tourist.html" class="back">← Back to Tourist Spots</a>
 
-    <a href="#" class="direction-btn" id="toGrotto">🧭 Get Directions</a>
+</main>
 
-    <h3>🚏 Jeepney Terminal (Dominican Hill–Lourdes)</h3>
-    <p><strong>Location:</strong> Kayang Street, near Baguio Public Market</p>
-    <p><strong>Fare:</strong> ₱12 – ₱15</p>
+<!-- POPUP IMAGE / LIGHTBOX -->
+<div id="imgPopup">
+  <span id="closePopup">&times;</span>
+  <img src="lgroto.jpg" alt="Lourdes Grotto">
+</div>
 
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.345!2d120.593556!3d16.415200!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1a15e156b4c3%3A0xaea6052f57742730!2sKayang%20Street%20Jeepney%20Terminal!5e0!3m2!1sen!2sph!4v1730156005011!5m2!1sen!2sph" loading="lazy"></iframe>
+<script>
+const popup = document.getElementById("imgPopup");
+const openImg = document.getElementById("openImage");
+const closePopup = document.getElementById("closePopup");
 
-    <a href="#" class="direction-btn" id="toTerminal">🚐 Directions to Jeepney Terminal</a>
+openImg.onclick = () => popup.style.display = "flex";
+closePopup.onclick = () => popup.style.display = "none";
 
-    <a href="tourist.html" class="back-btn">← Back to Tourist Spots</a>
-  </main>
+popup.onclick = (e) => {
+  if (e.target === popup) popup.style.display = "none";
+};
+</script>
 
-  <footer>
-    <p>© 2025 Baguio Track | All Rights Reserved</p>
-  </footer>
-
-  <script>
-    const grottoLat = 16.409344;
-    const grottoLng = 120.583775;
-    const terminalLat = 16.41520;
-    const terminalLng = 120.593556;
-
-    document.getElementById("toGrotto").addEventListener("click", e => {
-      e.preventDefault();
-      navigator.geolocation.getCurrentPosition(pos => {
-        window.open(`https://www.google.com/maps/dir/?api=1&origin=${pos.coords.latitude},${pos.coords.longitude}&destination=${grottoLat},${grottoLng}`);
-      }, () => alert("Allow location to get directions."));
-    });
-
-    document.getElementById("toTerminal").addEventListener("click", e => {
-      e.preventDefault();
-      window.open(`https://www.google.com/maps/dir/?api=1&destination=${terminalLat},${terminalLng}`);
-    });
-  </script>
 </body>
 </html>
