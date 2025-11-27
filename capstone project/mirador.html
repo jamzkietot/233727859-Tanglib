@@ -5,82 +5,155 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mirador Heritage & Eco-Spirituality Park | Baguio Track</title>
   <style>
+    /* GENERAL */
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      background-color: #f8efe2;
-      color: #333;
+      background: #f3ebdb;
+      color: #2c2c2c;
     }
+
+    a { text-decoration: none; }
 
     /* HEADER */
     header {
-      background-color: #154d2e;
+      background: #145532;
       color: #fff;
+      padding: 12px 45px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 50px;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
     }
 
-    header h2 { margin: 0; }
+    header h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+    }
 
     nav a {
       color: #fff;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 600;
-      transition: color 0.3s;
+      margin-left: 25px;
+      font-weight: 500;
     }
 
-    nav a:hover, nav a.active { color: #f2d7b5; }
+    nav a:hover,
+    nav a.active {
+      color: #d8c7a0;
+    }
 
+    /* MAIN */
     main {
-      padding: 0 60px 60px;
-      max-width: 1100px;
-      margin: 0 auto;
+      max-width: 1280px;
+      margin: 25px auto;
+      padding: 0 20px;
     }
 
-    /* HERO */
-    .hero-text {
-      text-align: center;
-      color: #154d2e;
-      animation: fadeIn 1.5s ease-in-out;
-      margin-top: 100px;
-      margin-bottom: 40px;
-    }
-    .hero-text h1 { font-size: 34px; font-weight: 700; }
-    .hero-text p { font-size: 18px; color: #555; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* TOP GRID */
+    .top-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 25px;
+      margin-bottom: 25px;
     }
 
-    h3 { color: #154d2e; margin-top: 30px; margin-bottom: 10px; }
-    p, li { line-height: 1.7; text-align: justify; }
-    ul { list-style: none; padding-left: 0; }
-    li { margin-bottom: 5px; }
-    strong { color: #154d2e; }
-
-    iframe {
+    /* IMAGE */
+    .hero-side-img {
       width: 100%;
-      height: 350px;
-      border: none;
-      border-radius: 10px;
-      margin-top: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      height: 330px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .back-btn, .direction-btn {
+    .hero-side-img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+    }
+
+    /* IMAGE POPUP (LIGHTBOX) */
+    #imgPopup {
+      display: none;
+      position: fixed;
+      z-index: 3000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(3px);
+      justify-content: center;
+      align-items: center;
+    }
+
+    #imgPopup img {
+      width: 90%;
+      max-width: 900px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    #closePopup {
+      position: fixed;
+      top: 25px;
+      right: 40px;
+      font-size: 38px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* CARDS */
+    .card {
+      background: #ffffff;
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #154d2e;
+    }
+
+    /* TITLES */
+    .title {
+      font-size: 32px;
+      color: #154d2e;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    .subtitle {
+      margin-top: -5px;
+      font-size: 15px;
+      color: #666;
+    }
+
+    /* MAP */
+    .map-card iframe {
+      border-radius: 10px;
+      width: 100%;
+      height: 320px;
+      border: none;
+    }
+
+    /* BUTTONS */
+    .back-btn,
+    .direction-btn {
       display: inline-block;
       margin-top: 20px;
-      background: #154d2e;
+      background: #145532;
       color: #fff;
-      padding: 10px 18px;
+      padding: 10px 14px;
       border-radius: 6px;
       text-decoration: none;
       font-size: 15px;
@@ -88,23 +161,32 @@
       margin-right: 10px;
     }
 
-    .back-btn:hover, .direction-btn:hover { background: #1a693a; }
+    .back-btn:hover, .direction-btn:hover {
+      background: #187842;
+    }
 
-    footer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #154d2e;
-      color: #fff;
-      padding: 12px 0;
-      font-size: 14px;
-      margin-top: 50px;
-      text-align: center;
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    @media (max-width: 900px) {
+      .grid, .top-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-side-img {
+        height: 250px;
+      }
     }
   </style>
 </head>
 
 <body>
+
 <header>
   <h2>Baguio Track</h2>
   <nav>
@@ -112,94 +194,89 @@
     <a href="tourist.html" class="active">Tourist Spots</a>
     <a href="#">Routes</a>
     <a href="#">Fares</a>
-    <a href="#">About</a>
   </nav>
 </header>
 
 <main>
-  <div class="hero-text">
-    <h1>Mirador Heritage & Eco-Spirituality Park</h1>
-    <p>Discover peace, history, and Instagram-worthy views of Baguio.</p>
+
+  <!-- TOP SECTION -->
+  <div class="top-grid">
+
+    <!-- CLICKABLE IMAGE -->
+    <img src="mirador.jpg" class="hero-side-img" id="openImage" alt="Mirador Heritage Park">
+
+    <div class="card">
+      <h3>Visitor Information</h3>
+      <p><strong>📍 Location:</strong> Mirador Hill, Baguio City</p>
+      <p><strong>💰 Entrance Fee:</strong> ₱100 (as of 2025)</p>
+      <p><strong>🕕 Hours:</strong> 6:00 AM – 6:00 PM</p>
+    </div>
   </div>
 
-  <h3>About Mirador Heritage Park</h3>
-  <p>
-    <strong>Mirador Heritage & Eco-Spirituality Park</strong> sits behind the Lourdes Grotto 
-    in Baguio City. It features the famous Torii Gate, stunning sunset spots, stone gardens, 
-    meditation spaces, and quiet nature trails.
-  </p>
+  <h1 class="title">Mirador Heritage & Eco-Spirituality Park</h1>
+  <p class="subtitle">Discover peace, history, and Instagram-worthy views of Baguio.</p>
 
-  <h3>Visitor Information</h3>
-  <ul>
-    <li><strong>📍 Location:</strong> Mirador Hill, Baguio City</li>
-    <li><strong>💰 Entrance Fee:</strong> ₱100 (as of 2025)</li>
-    <li><strong>🕕 Hours:</strong> 6:00 AM – 6:00 PM</li>
-  </ul>
+  <div class="grid">
 
-  <h3>Nearby Spots & Food</h3>
-  <ul>
-    <li>🙏 Lourdes Grotto (walking distance)</li>
-    <li>🏞 Dominican Heritage Hill & Diplomat Hotel</li>
-    <li>🍜 Ihawan sa Mirador</li>
-    <li>☕ Local cafes around Mirador Hill</li>
-  </ul>
+    <div>
+      <div class="card">
+        <h3>About Mirador Heritage Park</h3>
+        <p>
+          The <strong>Mirador Heritage & Eco-Spirituality Park</strong> sits behind the Lourdes Grotto in Baguio City. It features the famous Torii Gate, stunning sunset spots, stone gardens, meditation spaces, and quiet nature trails.
+        </p>
+      </div>
 
-  <h3>Map Location</h3>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.284351!2d120.57917!3d16.39678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1a2a64d2e5a7%3A0x72c172ad1a2021e4!2sMirador%20Heritage%20and%20Eco-Spirituality%20Park!5e0!3m2!1sen!2sph!4v1700000000000"
-  loading="lazy"></iframe>
+      <!-- MAP -->
+      <div class="card map-card" id="mapLocation" style="margin-top: 20px;">
+        <h3>Map Location</h3>
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.284351!2d120.57917!3d16.39678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1a2a64d2e5a7%3A0x72c172ad1a2021e4!2sMirador%20Heritage%20and%20Eco-Spirituality%20Park!5e0!3m2!1sen!2sph!4v1700000000000" 
+          loading="lazy"></iframe>
+      </div>
+    </div>
 
-  <a href="#" id="toMirador" class="direction-btn">🧭 Get Directions to Mirador</a>
+    <div>
+      <div class="card">
+        <h3>Nearby Spots & Food</h3>
+        <ul>
+          <li>🙏 Lourdes Grotto (walking distance)</li>
+          <li>🏞 Dominican Heritage Hill & Diplomat Hotel</li>
+          <li>🍜 Ihawan sa Mirador</li>
+          <li>☕ Local cafes around Mirador Hill</li>
+        </ul>
+      </div>
 
-  <section id="jeepney-terminal" style="margin-top:2rem;padding:1rem;background:#f9fafb;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
-    <h3>🚏 Jeepney Terminal (Lourdes/Dominican Hill Route)</h3>
-    <p><strong>Location:</strong> Kayang Street, near Baguio Public Market</p>
-    <p><strong>Fare:</strong> ₱12 – ₱15</p>
-    <p><strong>Route:</strong> Kayang St → Dominican Hill → Lourdes Grotto → Mirador</p>
+      <div class="card">
+        <h3>Jeepney Terminal</h3>
+        <p><strong>Location:</strong> Kayang Street, near Baguio Public Market</p>
+        <p><strong>Fare:</strong> ₱12 – ₱15</p>
+      </div>
+    </div>
 
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.35!2d120.60063!3d16.41355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1a0d2d5c5e5b%3A0x9c9757a0c123b8ee!2sKayang%20St%2C%20Baguio!5e0!3m2!1sen!2sph!4v1700000000000"
-    width="100%" height="300" style="border:0;border-radius:8px;" loading="lazy"></iframe>
-
-    <a href="#" id="toTerminal" class="direction-btn">🚐 Get Directions to Jeepney Terminal</a>
-    <a href="#" id="continueTrip" class="direction-btn">⛰ Continue Trip to Mirador</a>
-  </section>
+  </div>
 
   <a href="tourist.html" class="back-btn">← Back to Tourist Spots</a>
+
 </main>
 
-<footer>
-  <p>© 2025 Baguio Track | All Rights Reserved</p>
-</footer>
+<!-- POPUP IMAGE / LIGHTBOX -->
+<div id="imgPopup">
+  <span id="closePopup">&times;</span>
+  <img src="mirador.jpg" alt="Mirador Heritage Park">
+</div>
 
 <script>
-const miradorLat = 16.39678;
-const miradorLng = 120.57917;
-const terminalLat = 16.41355;
-const terminalLng = 120.60063;
+const popup = document.getElementById("imgPopup");
+const openImg = document.getElementById("openImage");
+const closePopup = document.getElementById("closePopup");
 
-document.getElementById("toMirador").addEventListener("click", function(e) {
-  e.preventDefault();
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(pos=>{
-      const {latitude,longitude}=pos.coords;
-      window.open(`https://www.google.com/maps/dir/?api=1&origin=${latitude},${longitude}&destination=${miradorLat},${miradorLng}`);
-    });
-  }
-});
+openImg.onclick = () => popup.style.display = "flex";
+closePopup.onclick = () => popup.style.display = "none";
 
-document.getElementById("toTerminal").addEventListener("click", function(e) {
-  e.preventDefault();
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(pos=>{
-      const {latitude,longitude}=pos.coords;
-      window.open(`https://www.google.com/maps/dir/?api=1&origin=${latitude},${longitude}&destination=${terminalLat},${terminalLng}`);
-    });
-  }
-});
-
-document.getElementById("continueTrip").addEventListener("click", e=>{
-  e.preventDefault();
-  window.open(`https://www.google.com/maps/dir/?api=1&origin=${terminalLat},${terminalLng}&destination=${miradorLat},${miradorLng}`);
-});
+popup.onclick = (e) => {
+  if (e.target === popup) popup.style.display = "none";
+};
 </script>
+
 </body>
 </html>
