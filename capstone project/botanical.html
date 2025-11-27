@@ -65,6 +65,46 @@ main {
   border-radius: 12px;
   object-fit: cover;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.hero-side-img:hover {
+  transform: scale(1.03);
+}
+
+/* IMAGE POPUP (LIGHTBOX) */
+#imgPopup {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(3px);
+  justify-content: center;
+  align-items: center;
+}
+
+#imgPopup img {
+  width: 90%;
+  max-width: 900px;
+  border-radius: 12px;
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+#closePopup {
+  position: fixed;
+  top: 25px;
+  right: 40px;
+  font-size: 38px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 /* CARDS */
@@ -149,7 +189,9 @@ main {
 
   <!-- TOP SECTION WITH IMAGE LEFT + INFO RIGHT -->
   <div class="top-grid">
-    <img src="botanicalpic.png" class="hero-side-img" alt="Botanical Garden">
+
+    <!-- CLICKABLE IMAGE -->
+    <img src="botanicalpic.png" class="hero-side-img" id="openImage" alt="Botanical Garden">
 
     <div class="card">
       <h3>Visitor Information</h3>
@@ -202,6 +244,25 @@ main {
   <a href="tourist.html" class="back">← Back to Tourist Spots</a>
 
 </main>
+
+<!-- POPUP IMAGE / LIGHTBOX -->
+<div id="imgPopup">
+  <span id="closePopup">&times;</span>
+  <img src="botanicalpic.png" alt="Botanical Garden">
+</div>
+
+<script>
+const popup = document.getElementById("imgPopup");
+const openImg = document.getElementById("openImage");
+const closePopup = document.getElementById("closePopup");
+
+openImg.onclick = () => popup.style.display = "flex";
+closePopup.onclick = () => popup.style.display = "none";
+
+popup.onclick = (e) => {
+  if (e.target === popup) popup.style.display = "none";
+};
+</script>
 
 </body>
 </html>
