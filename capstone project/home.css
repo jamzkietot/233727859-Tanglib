@@ -7,7 +7,10 @@
 }
 
 body {
-  background: linear-gradient(to top, #f2d7b5, #f8e8cd);
+  background: 
+    url('123.png') no-repeat center center fixed,
+    linear-gradient(to top, #f2d7b5, #f8e8cd);
+  background-size: cover;
   color: #154d2e;
   min-height: 100vh;
 }
