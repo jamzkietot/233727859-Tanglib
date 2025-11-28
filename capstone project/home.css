@@ -160,8 +160,7 @@ nav a:hover {
 }
 
 .feature-card {
-  background: #f8e8cd;
-  width: 240px;
+  width: 280px;        
   padding: 25px 20px;
   text-align: center;
   border-radius: 14px;
@@ -173,11 +172,14 @@ nav a:hover {
   transform: translateY(-8px);
 }
 
+
 .feature-card img {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 12px;
+  width: 160px;        
+  height: 160px;       
+  margin-bottom: 20px; 
   border-radius: 50%;
+  object-fit: cover;   
+  transition: transform 0.3s ease;
 }
 
 .feature-card h3 {
