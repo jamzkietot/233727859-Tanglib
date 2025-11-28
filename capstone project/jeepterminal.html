@@ -1,223 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Baguio Tourist Spots | Jeepney Guide</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Baguio Track | Jeepney Guide</title>
+  <link rel="stylesheet" href="home.css" />
+  <style>
+    /* GLOBAL STYLES */
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f6f3ea;
+      color: #2c2c2c;
+    }
 
-<style>
-/* GLOBAL DESIGN */
-body {
-    margin: 0;
-    font-family: "Poppins", sans-serif;
-    background: #f6f3ea;
-    color: #2c2c2c;
-}
+    header {
+      background: #145532;
+      color: #fff;
+      padding: 14px 45px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-header {
-    background: #145532;
-    color: #fff;
-    padding: 14px 45px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-header h2 {
-    margin: 0;
-    font-size: 22px;
-    font-weight: 600;
-}
+    .logo-area img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
 
-nav a {
-    color: white;
-    margin-left: 25px;
-    font-weight: 500;
-    text-decoration: none;
-}
+    header h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+    }
 
-nav a.active,
-nav a:hover {
-    color: #f2d7b5;
-}
+    nav a {
+      color: white;
+      margin-left: 25px;
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 16px;
+    }
 
-/* MAIN */
-main {
-    max-width: 1150px;
-    margin: 25px auto;
-    padding: 0 18px;
-}
+    nav a.active,
+    nav a:hover {
+      color: #f2d7b5;
+    }
 
-/* TITLES */
-.title {
-    font-size: 34px;
-    font-weight: 700;
-    color: #154d2e;
-    margin-bottom: 5px;
-}
-.subtitle {
-    font-size: 15px;
-    color: #666;
-    margin-top: -5px;
-}
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(135deg, #9acf87, #6a9955);
+      padding: 40px 45px;
+      color: white;
+      text-align: center;
+      font-weight: 700;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+      margin-bottom: 30px;
+    }
 
-/* CARD STYLE — MATCHING YOUR SAMPLE */
-.card {
-    margin-top: 30px;
-    padding: 22px;
-    background: white;
-    border-radius: 14px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-}
+    .hero-content h1 {
+      margin: 0 0 10px 0;
+      font-size: 36px;
+    }
 
-.card h3 {
-    margin-top: 0;
-    font-size: 20px;
-    color: #154d2e;
-}
+    .hero-content p {
+      margin: 0 0 20px 0;
+      font-weight: 400;
+      font-size: 18px;
+    }
 
-.card p {
-    margin: 6px 0;
-    font-size: 15px;
-}
+    .back-btn {
+      background: #145532;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+      display: inline-block;
+    }
 
-.map-container {
-    margin-top: 15px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
+    .back-btn:hover {
+      background: #1e7445;
+    }
 
-/* BUTTON */
-.btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 18px;
-    background: #145532;
-    color: white;
-    border-radius: 6px;
-    text-decoration: none;
-}
-.btn:hover {
-    background: #1e7445;
-}
+    /* MAIN CONTENT */
+    main {
+      max-width: 1200px;
+      margin: 0 auto 60px auto;
+      padding: 0 30px;
+    }
 
-</style>
+    /* TOURIST GALLERY GRID */
+    .jeep-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 20px 0;
+    }
 
+    /* JEPPENY CARD */
+    .jeep-card {
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+      color: #154d2e;
+      text-decoration: none;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .jeep-card:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .jeep-card h3 {
+      margin: 0 0 12px 0;
+      font-size: 22px;
+      font-weight: 700;
+      color: #2c5d3f;
+    }
+
+    .jeep-card p {
+      margin: 6px 0;
+      font-size: 15px;
+      line-height: 1.4;
+      font-weight: 500;
+      color: #000000; /* SUBTITLE LABELS AND TEXT BLACK */
+    }
+
+    .jeep-card .btn {
+      margin-top: 12px;
+      background: #145532;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 600;
+      box-shadow: 0 3px 8px rgba(20, 85, 50, 0.4);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .jeep-card .btn:hover {
+      background: #1e7445;
+      box-shadow: 0 6px 12px rgba(30, 116, 69, 0.7);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #145532;
+      color: white;
+      padding: 16px 45px;
+      text-align: center;
+      font-weight: 500;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+  </style>
 </head>
+
 <body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo-area">
+      <img src="user_8801434.png" alt="User Profile" />
+      <h2>Baguio Track</h2>
+    </div>
 
-<!-- HEADER -->
-<header>
-  <h2>Baguio Track</h2>
-  <nav>
-    <a href="home.html">Home</a>
-    <a href="tourist.html">Tourist Spots</a>
-    <a href="#">Terminals</a>
-  </nav>
-</header>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="tourist.html">Tourist Spots</a>
+      <a href="jeepterminal.html" class="active">Terminals</a>
+    </nav>
+  </header>
 
-<main>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Jeepney Terminals & Routes</h1>
+      <p>Navigate Baguio's top destinations using local jeepneys.</p>
+      <a href="home.html" class="back-btn">← Back to Home</a>
+    </div>
+  </section>
 
-    <h1 class="title">Jeepney Terminals & Routes</h1>
-    <p class="subtitle">Navigate Baguio's top destinations using local jeepneys.</p>
+  <!-- JEEPNEY ROUTES CARDS -->
+  <main>
+    <section class="jeep-gallery" id="guide-container"></section>
+  </main>
 
-    <div id="guide-container"></div>
-
-</main>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const touristSpots = {
-        "Mines View Park": {
-            jeep_route: "Mines View Jeepney",
-            terminal: "F. Calderon Street (near Session Road / Landbank)",
-            maps: "F+Calderon+Street+Baguio",
-            notes: "Also passes Botanical Garden, The Mansion, and Wright Park.",
-            fare: "Approx. ₱15"
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const spots = {
+        "📍Mines View Park": {
+          jeep_route: "Mines View Jeepney",
+          terminal: "F. Calderon Street (near Session Road / Landbank)",
+          notes: "Also passes Botanical Garden, The Mansion, and Wright Park.",
+          fare: "Approx. ₱15",
+          maps: "F+Calderon+Street+Baguio",
         },
-        "Botanical Garden": {
-            jeep_route: "Mines View Jeepney",
-            terminal: "F. Calderon Street (near Session Road / Landbank)",
-            maps: "F+Calderon+Street+Baguio",
-            notes: "Ask driver to drop you at the Botanical Garden entrance.",
-            fare: "Approx. ₱15"
+        "📍Botanical Garden": {
+          jeep_route: "Mines View Jeepney",
+          terminal: "F. Calderon Street (near Session Road / Landbank)",
+          notes: "Ask driver to drop you at the Botanical Garden entrance.",
+          fare: "Approx. ₱15",
+          maps: "F+Calderon+Street+Baguio",
         },
-        "The Mansion": {
-            jeep_route: "Mines View Jeepney",
-            terminal: "F. Calderon Street (near Session Road / Landbank)",
-            maps: "F+Calderon+Street+Baguio",
-            notes: "Get off at Wright Park.",
-            fare: "Approx. ₱15"
+        "📍The Mansion": {
+          jeep_route: "Mines View Jeepney",
+          terminal: "F. Calderon Street (near Session Road / Landbank)",
+          notes: "Get off at Wright Park.",
+          fare: "Approx. ₱15",
+          maps: "F+Calderon+Street+Baguio",
         },
-        "Camp John Hay": {
-            jeep_route: "Scout Barrio or Loakan Jeepney",
-            terminal: "East side of Burnham Park (Harrison Road)",
-            maps: "Harrison+Road+Baguio",
-            notes: "Jeep drops you at the John Hay gate.",
-            fare: "Approx. ₱13"
+        "📍Camp John Hay": {
+          jeep_route: "Scout Barrio or Loakan Jeepney",
+          terminal: "East side of Burnham Park (Harrison Road)",
+          notes: "Jeep drops you at the John Hay gate.",
+          fare: "Approx. ₱13",
+          maps: "Harrison+Road+Baguio",
         },
-        "Lourdes Grotto": {
-            jeep_route: "Dominican Hill / Lourdes Jeepney",
-            terminal: "Kayang Street (near Baguio Market)",
-            maps: "Kayang+Street+Baguio",
-            notes: "Drop-off is at the foot of the grotto stairs.",
-            fare: "Starts at ₱13"
+        "📍Lourdes Grotto": {
+          jeep_route: "Dominican Hill / Lourdes Jeepney",
+          terminal: "Kayang Street (near Baguio Market)",
+          notes: "Drop-off is at the foot of the grotto stairs.",
+          fare: "Starts at ₱13",
+          maps: "Kayang+Street+Baguio",
         },
-        "Mirador Heritage Park": {
-            jeep_route: "Dominican Hill / Lourdes Jeepney",
-            terminal: "Kayang Street (near Baguio Market)",
-            maps: "Kayang+Street+Baguio",
-            notes: "A short walk from Lourdes Grotto.",
-            fare: "Starts at ₱13"
+        "📍Mirador Heritage Park": {
+          jeep_route: "Dominican Hill / Lourdes Jeepney",
+          terminal: "Kayang Street (near Baguio Market)",
+          notes: "A short walk from Lourdes Grotto.",
+          fare: "Starts at ₱13",
+          maps: "Kayang+Street+Baguio",
         },
-        "Good Shepherd Convent": {
-            jeep_route: "Mines View Jeepney",
-            terminal: "F. Calderon Street",
-            maps: "F+Calderon+Street+Baguio",
-            notes: "A short walk from Mines View Park.",
-            fare: "Approx. ₱15"
+        "📍Good Shepherd Convent": {
+          jeep_route: "Mines View Jeepney",
+          terminal: "F. Calderon Street",
+          notes: "A short walk from Mines View Park.",
+          fare: "Approx. ₱15",
+          maps: "F+Calderon+Street+Baguio",
         },
-    };
+      };
 
-    const container = document.getElementById("guide-container");
+      const container = document.getElementById("guide-container");
 
-    for (const spot in touristSpots) {
-        const info = touristSpots[spot];
+      for (const spot in spots) {
+        const info = spots[spot];
+        const mapsUrl = info.maps
+          ? `https://www.google.com/maps/dir/?api=1&destination=${info.maps}`
+          : "#";
 
-        const card = document.createElement("div");
-        card.classList.add("card");
-
-        if (info.jeep_route.includes("None")) {
-            card.classList.add("no-jeep");
-        }
-
-        // BUILD MAP URL
-        let mapsUrl = "#";
-        if (info.maps !== "") {
-            mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${info.maps}`;
-        }
+        const card = document.createElement("a");
+        card.className = "jeep-card";
+        card.href = mapsUrl;
+        card.target = "_blank";
+        card.rel = "noopener noreferrer";
 
         card.innerHTML = `
-            <h3>📍 ${spot}</h3>
-            <p><strong>Jeep Route:</strong> ${info.jeep_route}</p>
-            <p><strong>Terminal:</strong> ${info.terminal}</p>
-            <p><strong>Fare:</strong> ${info.fare}</p>
-            <p><strong>Notes:</strong> ${info.notes}</p>
-
-            <a class="btn" 
-               href="${mapsUrl}" 
-               target="_blank" 
-               ${info.maps === "" ? "style='pointer-events:none;opacity:0.5;'" : ""}>
-               View Route to Terminal
-            </a>
+          <h3>${spot}</h3>
+          <p><strong>Jeep Route:</strong> ${info.jeep_route}</p>
+          <p><strong>Terminal:</strong> ${info.terminal}</p>
+          <p><strong>Fare:</strong> ${info.fare}</p>
+          <p><strong>Notes:</strong> ${info.notes}</p>
+          <span class="btn">View Route to Terminal</span>
         `;
 
         container.appendChild(card);
-    }
-});
-</script>
+      }
+    });
+  </script>
 
-
+  <footer>
+    <p>© 2025 Baguio Track | All Rights Reserved</p>
+  </footer>
 </body>
 </html>
