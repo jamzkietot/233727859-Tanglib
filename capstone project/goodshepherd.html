@@ -1,188 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Good Shepherd Convent | Baguio Track</title>
-  <style>
-    /* GENERAL */
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: #f3ebdb;
-      color: #2c2c2c;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Shepherd Convent | Baguio Track</title>
 
-    a { text-decoration: none; }
+<style>
+/* GENERAL */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f3ebdb;
+  color: #2c2c2c;
+}
 
-    /* HEADER */
-    header {
-      background: #145532;
-      color: #fff;
-      padding: 12px 45px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+a { text-decoration: none; }
 
-    header h2 {
-      margin: 0;
-      font-size: 22px;
-      font-weight: 600;
-    }
+/* HEADER */
+header {
+  background: #145532;
+  color: #fff;
+  padding: 12px 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    nav a {
-      color: #fff;
-      margin-left: 25px;
-      font-weight: 500;
-    }
+header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
 
-    nav a:hover,
-    nav a.active {
-      color: #d8c7a0;
-    }
+nav a {
+  color: #fff;
+  margin-left: 25px;
+  font-weight: 500;
+}
 
-    /* MAIN */
-    main {
-      max-width: 1280px;
-      margin: 25px auto;
-      padding: 0 20px;
-    }
+nav a:hover,
+nav a.active {
+  color: #d8c7a0;
+}
 
-    /* TOP GRID */
-    .top-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 25px;
-      margin-bottom: 25px;
-    }
+/* MAIN */
+main {
+  max-width: 1280px;
+  margin: 25px auto;
+  padding: 0 20px;
+}
 
-    /* IMAGE */
-    .hero-side-img {
-      width: 100%;
-      height: 330px;
-      border-radius: 12px;
-      object-fit: cover;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+/* TOP GRID IMAGE + INFO */
+.top-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+  margin-bottom: 25px;
+}
 
-    .hero-side-img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 10px 26px rgba(0,0,0,0.18);
-    }
+/* IMAGE LEFT SIDE */
+.hero-side-img {
+  width: 100%;
+  height: 330px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
 
-    /* IMAGE POPUP (LIGHTBOX) */
-    #imgPopup {
-      display: none;
-      position: fixed;
-      z-index: 3000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.75);
-      backdrop-filter: blur(3px);
-      justify-content: center;
-      align-items: center;
-    }
+.hero-side-img:hover {
+  transform: scale(1.03);
+}
 
-    #imgPopup img {
-      width: 90%;
-      max-width: 900px;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      animation: zoomIn 0.3s ease;
-    }
+/* IMAGE POPUP (LIGHTBOX) */
+#imgPopup {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(3px);
+  justify-content: center;
+  align-items: center;
+}
 
-    @keyframes zoomIn {
-      from { transform: scale(0.7); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+#imgPopup img {
+  width: 90%;
+  max-width: 900px;
+  border-radius: 12px;
+  animation: zoomIn 0.3s ease;
+}
 
-    #closePopup {
-      position: fixed;
-      top: 25px;
-      right: 40px;
-      font-size: 38px;
-      color: #fff;
-      cursor: pointer;
-      font-weight: bold;
-    }
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 
-    /* CARDS */
-    .card {
-      background: #ffffff;
-      padding: 22px;
-      border-radius: 12px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    }
+#closePopup {
+  position: fixed;
+  top: 25px;
+  right: 40px;
+  font-size: 38px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    .card h3 {
-      margin-top: 0;
-      color: #154d2e;
-    }
+/* CARDS */
+.card {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
 
-    /* TITLES */
-    .title {
-      font-size: 32px;
-      color: #154d2e;
-      font-weight: 700;
-      margin-top: 10px;
-    }
+.card h3 {
+  margin-top: 0;
+  color: #154d2e;
+}
 
-    .subtitle {
-      margin-top: -5px;
-      font-size: 15px;
-      color: #666;
-    }
+/* TITLES */
+.title {
+  font-size: 32px;
+  color: #154d2e;
+  font-weight: 700;
+  margin-top: 10px;
+}
 
-    /* MAP */
-    .map-card iframe {
-      border-radius: 10px;
-      width: 100%;
-      height: 320px;
-      border: none;
-    }
+.subtitle {
+  margin-top: -5px;
+  font-size: 15px;
+  color: #666;
+}
 
-    /* BUTTONS */
-    .back-btn,
-    .direction-btn {
-      display: inline-block;
-      margin-top: 20px;
-      background: #145532;
-      color: #fff;
-      padding: 10px 14px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 15px;
-      transition: background 0.3s;
-      margin-right: 10px;
-    }
+/* MAP */
+.map-card iframe {
+  border-radius: 10px;
+  width: 100%;
+  height: 320px;
+  border: none;
+}
 
-    .back-btn:hover, .direction-btn:hover {
-      background: #187842;
-    }
+/* TWO-COLUMN LAYOUT */
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+  margin-top: 25px;
+}
 
-    /* GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 25px;
-      margin-top: 25px;
-    }
+/* BACK BUTTON */
+.back {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 14px;
+  background: #145532;
+  color: #fff;
+  border-radius: 6px;
+}
 
-    @media (max-width: 900px) {
-      .grid, .top-grid {
-        grid-template-columns: 1fr;
-      }
+.back:hover { background: #187842; }
 
-      .hero-side-img {
-        height: 250px;
-      }
-    }
-  </style>
+@media (max-width: 900px) {
+  .grid, .top-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-side-img {
+    height: 250px;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -200,8 +189,6 @@
 
   <!-- TOP SECTION -->
   <div class="top-grid">
-
-    <!-- CLICKABLE IMAGE -->
     <img src="goods.jpg" class="hero-side-img" id="openImage" alt="Good Shepherd Convent">
 
     <div class="card">
@@ -214,29 +201,45 @@
   </div>
 
   <h1 class="title">Visit the Good Shepherd Convent</h1>
-  <p class="subtitle">Home of Baguio’s famous ube jam and a place of peace & charity.</p>
+  <p class="subtitle">Home of Baguio’s famous ube jam and a peaceful place run by the Good Shepherd Sisters.</p>
 
   <div class="grid">
 
+    <!-- LEFT SIDE -->
     <div>
       <div class="card">
-        <h3>About Good Shepherd</h3>
+        <h3>About Good Shepherd Convent</h3>
         <p>
-          The <strong>Good Shepherd Convent</strong> is famous for its delicious local products such as ube jam, strawberry jam, and peanut brittle. Every purchase helps support the education of Cordillera youth.
+          The <strong>Good Shepherd Convent</strong> is known across the Philippines for its delicious local products 
+          such as ube jam, strawberry jam, and peanut brittle. Each purchase helps fund the education of 
+          Cordillera youth through the Good Shepherd Scholarship Program.
         </p>
       </div>
 
-      <!-- MAP -->
-      <div class="card map-card" id="mapLocation" style="margin-top: 20px;">
+      <div class="card map-card" style="margin-top: 20px;">
         <h3>Map Location</h3>
-        <iframe 
+        <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.2799545917973!2d120.616875075071!3d16.418854884304658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1cfe796938d5%3A0xaa1fd17f88d3d299!2sGood%20Shepherd%20Convent!5e0!3m2!1sen!2sph!4v1730112000000!5m2!1sen!2sph"
           loading="lazy"></iframe>
       </div>
     </div>
+
+    <!-- RIGHT SIDE -->
+    <div>
+      <div class="card">
+        <h3>Nearby Spots & Attractions</h3>
+        <ul>
+          <li>🌸 Mines View Park (5 mins away)</li>
+          <li>🛍️ Mines View Souvenir Stalls</li>
+          <li>☕ Coffee shops along Outlook Drive</li>
+          <li>🐎 Horseback Riding Area</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 
-  <a href="tourist.html" class="back-btn">← Back to Tourist Spots</a>
+  <a href="tourist.html" class="back">← Back to Tourist Spots</a>
 
 </main>
 
