@@ -50,7 +50,7 @@ main {
   padding: 0 20px;
 }
 
-/* TOP GRID */
+/* TOP GRID IMAGE + INFO */
 .top-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -58,7 +58,7 @@ main {
   margin-bottom: 25px;
 }
 
-/* IMAGE */
+/* IMAGE LEFT SIDE */
 .hero-side-img {
   width: 100%;
   height: 330px;
@@ -66,23 +66,19 @@ main {
   object-fit: cover;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .hero-side-img:hover {
   transform: scale(1.03);
-  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
 }
 
-/* IMAGE POPUP (LIGHTBOX) */
+/* IMAGE POPUP */
 #imgPopup {
   display: none;
   position: fixed;
   z-index: 3000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0,0,0,0.75);
   backdrop-filter: blur(3px);
   justify-content: center;
@@ -93,7 +89,6 @@ main {
   width: 90%;
   max-width: 900px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   animation: zoomIn 0.3s ease;
 }
 
@@ -139,7 +134,7 @@ main {
   color: #666;
 }
 
-/* MAP */
+/* MAP CARD */
 .map-card iframe {
   border-radius: 10px;
   width: 100%;
@@ -147,7 +142,7 @@ main {
   border: none;
 }
 
-/* TWO-COL GRID */
+/* TWO-COLUMN LAYOUT */
 .grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -155,6 +150,7 @@ main {
   margin-top: 25px;
 }
 
+/* BACK BUTTON */
 .back {
   display: inline-block;
   margin-top: 20px;
@@ -166,11 +162,11 @@ main {
 
 .back:hover { background: #187842; }
 
-
 @media (max-width: 900px) {
   .grid, .top-grid {
     grid-template-columns: 1fr;
   }
+
   .hero-side-img {
     height: 250px;
   }
@@ -193,8 +189,6 @@ main {
 
   <!-- TOP SECTION -->
   <div class="top-grid">
-
-    <!-- CLICKABLE IMAGE -->
     <img src="lgroto.jpg" class="hero-side-img" id="openImage" alt="Lourdes Grotto">
 
     <div class="card">
@@ -202,39 +196,57 @@ main {
       <p><strong>📍 Location:</strong> Dominican Hill Road, Baguio City</p>
       <p><strong>💰 Entrance Fee:</strong> Free</p>
       <p><strong>🕕 Best Time to Visit:</strong> Early morning or sunset</p>
+      <p><strong>📌 Highlights:</strong> 252-step pilgrimage stairs • Scenic hilltop view • Peaceful prayer site</p>
     </div>
   </div>
 
   <h1 class="title">Visit the Lourdes Grotto</h1>
-  <p class="subtitle">A sacred pilgrimage site offering peace and city views.</p>
+  <p class="subtitle">A sacred pilgrimage site offering peace, reflection, and beautiful views of Baguio City.</p>
 
   <div class="grid">
 
+    <!-- LEFT SIDE -->
     <div>
       <div class="card">
         <h3>About Lourdes Grotto</h3>
         <p>
-          The <strong>Our Lady of Lourdes Grotto</strong> is a famous religious shrine in Baguio City. 
-          Visitors climb <strong>252 steps</strong> to reach the statue of the Blessed Virgin Mary. 
-          The site provides a peaceful atmosphere and an amazing view of the city.
+          The <strong>Our Lady of Lourdes Grotto</strong> is one of Baguio City’s most visited religious landmarks.
+          Devotees climb <strong>252 steps</strong> leading to the statue of the Blessed Virgin Mary, 
+          symbolizing sacrifice and prayer. The hilltop offers a serene environment perfect for meditation 
+          and provides an overlooking view of Baguio.
         </p>
       </div>
 
-      <!-- MAP -->
-      <div class="card map-card" id="mapLocation" style="margin-top: 20px;">
+      <div class="card map-card" style="margin-top: 20px;">
         <h3>Map Location</h3>
         <iframe 
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.233989989168!2d120.583775!3d16.409344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1a32f3b6db5b%3A0xf133f8e09cc9b65d!2sOur%20Lady%20of%20Lourdes%20Grotto!5e0!3m2!1sen!2sph!4v1730155689211!5m2!1sen!2sph"
           loading="lazy"></iframe>
       </div>
     </div>
+
+    <!-- RIGHT SIDE COLUMN -->
+    <div>
+      <div class="card">
+        <h3>Nearby Spots & Attractions</h3>
+        <ul>
+          <li>🏰 Dominican Hill & Diplomat Hotel</li>
+          <li>🌄 Mirador Heritage and Eco-Spiritual Center</li>
+          <li>🕯️ Arashiyama Bamboo Grove (Mirador)</li>
+          <li>🌿 BenCab Museum (10 mins away)</li>
+          <li>🏞️ Tam-awan Village</li>
+          <li>☕ Local cafés along Dominican Hill</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 
   <a href="tourist.html" class="back">← Back to Tourist Spots</a>
 
 </main>
 
-<!-- POPUP IMAGE / LIGHTBOX -->
+<!-- POPUP IMAGE -->
 <div id="imgPopup">
   <span id="closePopup">&times;</span>
   <img src="lgroto.jpg" alt="Lourdes Grotto">
