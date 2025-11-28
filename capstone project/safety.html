@@ -6,7 +6,7 @@
   <title>Baguio Track | Safety Tips and Guidelines</title>
   <link rel="stylesheet" href="home.css" />
   <style>
-    /* GLOBAL STYLES */
+    /* GLOBAL STYLES (COPIED EXACTLY) */
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
@@ -54,7 +54,7 @@
       color: #f2d7b5;
     }
 
-    /* HERO SECTION */
+    /* HERO SECTION (COPIED EXACTLY) */
     .hero {
       background: linear-gradient(135deg, #9acf87, #6a9955);
       padding: 40px 45px;
@@ -92,58 +92,55 @@
       background: #1e7445;
     }
 
-    /* MAIN CONTENT */
+    /* MAIN CONTENT (COPIED EXACTLY) */
     main {
       max-width: 1200px;
       margin: 0 auto 60px auto;
       padding: 0 30px;
     }
 
-    /* SAFETY TIPS CARDS */
-    .tips-container {
+    /* GRID (COPIED EXACTLY) */
+    .jeep-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
       padding: 20px 0;
     }
 
-    .tip-card {
+    /* CARD (COPIED EXACTLY) */
+    .jeep-card {
       background: white;
       border-radius: 14px;
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
       color: #154d2e;
+      text-decoration: none;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
       padding: 20px;
-      font-weight: 600;
-      line-height: 1.5;
-      box-sizing: border-box;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
-    .tip-card:hover {
+    .jeep-card:hover {
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
       transform: translateY(-5px);
     }
 
-    .tip-card h3 {
-      margin-top: 0;
+    .jeep-card h3 {
+      margin: 0 0 12px 0;
       font-size: 22px;
       font-weight: 700;
       color: #2c5d3f;
-      margin-bottom: 12px;
     }
 
-    .tip-card ul {
-      margin: 0;
-      padding-left: 20px;
+    .jeep-card p {
+      margin: 6px 0;
+      font-size: 15px;
+      line-height: 1.4;
       font-weight: 500;
       color: #000000;
     }
 
-    .tip-card ul li {
-      margin-bottom: 10px;
-    }
-
-    /* FOOTER */
     footer {
       background: #145532;
       color: white;
@@ -156,6 +153,7 @@
 </head>
 
 <body>
+
   <!-- HEADER -->
   <header>
     <div class="logo-area">
@@ -174,65 +172,51 @@
   <!-- HERO SECTION -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Safety Tips and Guidelines</h1>
-      <p>Stay safe while exploring Baguio City with these helpful tips.</p>
+      <h1>Safety Tips & Guidelines</h1>
+      <p>Stay safe while exploring Baguio City.</p>
       <a href="home.html" class="back-btn">← Back to Home</a>
     </div>
   </section>
 
-<main>
-  <section class="tips-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 25px 0;">
+  <!-- SAFETY TIP CARDS -->
+  <main>
+    <section class="jeep-gallery">
 
-    <!-- General Safety and Personal Security -->
-    <article class="tip-card" style="background: #ffffff; padding: 22px; border-radius: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.1);">
-      <h3>General Safety & Personal Security</h3>
-      <ul>
-        <li><strong>Be Aware of Surroundings:</strong> Petty theft like pickpocketing can occur in crowded areas such as Session Road, public markets, and jeepneys. Keep your belongings secure (use zipped bags, avoid displaying expensive gadgets).</li>
-        <li><strong>Nightlife Safety:</strong> Go out with friends at night. Avoid walking alone in dimly lit or isolated areas like certain parts of Burnham Park or Camp John Hay. Use taxis or ride-hailing services like Grab.</li>
-        <li><strong>Use Reliable Transportation:</strong> When using taxis, ensure the driver uses the meter. Avoid unregistered vehicles and consider ride-hailing apps for convenience and safety.</li>
-        <li><strong>Stay Aware of Scams:</strong> Be cautious of overpricing by vendors or taxi drivers. Decline help from strangers asking for money and watch out for online rental scams.</li>
-      </ul>
-    </article>
+      <div class="jeep-card">
+        <h3>General Safety & Personal Security</h3>
+        <p><strong>Be Aware of Surroundings:</strong> Pickpocketing can occur in busy areas like Session Road and Burnham Park.</p>
+        <p><strong>Well-Lit Areas:</strong> Avoid walking alone in dark or isolated streets.</p>
+        <p><strong>Trusted Accommodations:</strong> Book only accredited hotels or transient houses.</p>
+        <p><strong>Avoid Scams:</strong> Watch out for overpriced tours and suspicious offers.</p>
+      </div>
 
-    <!-- Compliance with Local Ordinances -->
-    <article class="tip-card" style="background: #ffffff; padding: 22px; border-radius: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.1);">
-      <h3>Compliance with Local Ordinances</h3>
-      <ul>
-        <li><strong>Traffic Rules:</strong> "King of the Road" Ordinance requires stopping for five seconds before pedestrian lanes. Max speed limits are 20–30 kph in various areas.</li>
-        <li><strong>Anti-Distracted Walking:</strong> Using mobile devices or reading while walking/crossing streets is prohibited.</li>
-        <li><strong>Public Order:</strong>
-          <ul>
-            <li>No Smoking in public places.</li>
-            <li>No Burning of garbage or bonfires outside residences.</li>
-            <li>Silent Night Ordinance: Avoid excessive loud sounds in residential areas and public streets during certain hours.</li>
-            <li>Curfew for Minors: 9:00 PM – 4:00 AM.</li>
-          </ul>
-        </li>
-      </ul>
-    </article>
+      <div class="jeep-card">
+        <h3>Compliance with Local Ordinances</h3>
+        <p><strong>Follow Traffic Rules:</strong> Use crosswalks and respect pedestrian signals.</p>
+        <p><strong>No Smoking:</strong> Smoking is prohibited in public areas unless designated.</p>
+        <p><strong>Proper Waste Disposal:</strong> Segregate biodegradable and non-biodegradable trash.</p>
+        <p><strong>No Obstruction:</strong> Do not block sidewalks or public pathways.</p>
+        <p><strong>Respect Nature:</strong> Keep parks and heritage areas clean.</p>
+      </div>
 
-   <!-- Emergency Contacts -->
-<article class="tip-card" style="background: #ffffff; padding: 22px; border-radius: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.1);">
-  <h3>Emergency Contacts</h3>
-  <ul>
-    <li><strong>Directory Assistance:</strong> 114</li>
-    <li><strong>Fire Department:</strong> 442-2222 / 160</li>
-    <li><strong>City Disasters Coordinating Center:</strong> 442-1900</li>
-    <li><strong>Emergency Medical Services:</strong> 442-1911</li>
-    <li><strong>City Mayor’s Office:</strong> 442-3939 / 442-8920 / 442-8921 / 442-7228</li>
-    <li><strong>Baguio Police Station:</strong> 166</li>
-    <li><strong>Department of Tourism:</strong> 442-8848</li>
-    <li><strong>Highway Patrol:</strong> 442-4429</li>
-  </ul>
-</article>
+      <div class="jeep-card">
+        <h3>Emergency Contacts</h3>
+        <p><strong>Directory Assistance:</strong> 114</p>
+        <p><strong>Fire Department:</strong> 442-2222 / 160</p>
+        <p><strong>Disaster Office:</strong> 442-1900</p>
+        <p><strong>Medical Services:</strong> 442-1911</p>
+        <p><strong>Mayor’s Office:</strong> 442-3939 / 442-8920</p>
+        <p><strong>Baguio Police Station:</strong> 166</p>
+        <p><strong>Department of Tourism:</strong> 442-8848</p>
+        <p><strong>Highway Patrol:</strong> 442-4429</p>
+      </div>
 
-
-  </section>
-</main>
-
+    </section>
+  </main>
 
   <footer>
     <p>© 2025 Baguio Track | All Rights Reserved</p>
   </footer>
+
 </body>
 </html>
