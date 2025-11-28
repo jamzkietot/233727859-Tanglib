@@ -2,150 +2,108 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jeepney Terminals | Baguio Track</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baguio Tourist Spots | Jeepney Guide</title>
 
 <style>
 /* GLOBAL DESIGN */
 body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  background: #f6f3ea;
-  color: #2c2c2c;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #f6f3ea;
+    color: #2c2c2c;
 }
 
 header {
-  background: #145532;
-  color: #fff;
-  padding: 14px 45px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    background: #145532;
+    color: #fff;
+    padding: 14px 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header h2 {
-  margin: 0;
-  font-size: 22px;
-  font-weight: 600;
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
 }
 
 nav a {
-  color: white;
-  margin-left: 25px;
-  font-weight: 500;
-  text-decoration: none; /* ← underline removed */
+    color: white;
+    margin-left: 25px;
+    font-weight: 500;
+    text-decoration: none;
 }
 
 nav a.active,
 nav a:hover {
-  color: #e8d9ac;
+    color: #f2d7b5;
 }
 
-/* MAIN WRAPPER */
+/* MAIN */
 main {
-  max-width: 1150px;
-  margin: 25px auto;
-  padding: 0 18px;
+    max-width: 1150px;
+    margin: 25px auto;
+    padding: 0 18px;
 }
 
 /* TITLES */
 .title {
-  font-size: 34px;
-  font-weight: 700;
-  color: #154d2e;
-  margin-bottom: 5px;
+    font-size: 34px;
+    font-weight: 700;
+    color: #154d2e;
+    margin-bottom: 5px;
 }
 .subtitle {
-  font-size: 15px;
-  color: #666;
-  margin-top: -5px;
+    font-size: 15px;
+    color: #666;
+    margin-top: -5px;
 }
 
-/* SEARCH BAR */
-.search-box {
-  margin: 25px 0;
-}
-.search-box input {
-  width: 68%;
-  padding: 11px 15px;
-  font-size: 15px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-.search-box button {
-  padding: 11px 15px;
-  background: #145532;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-}
-.search-box button:hover {
-  background: #1f7748;
-}
-
-/* TABLE */
-.terminal-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-.terminal-table th {
-  background: #e7e2d3;
-  color: #154d2e;
-  padding: 14px;
-  text-align: left;
-  font-size: 15px;
-}
-.terminal-table td {
-  padding: 14px;
-  border-bottom: 1px solid #ddd;
-  font-size: 15px;
-}
-.terminal-table tr:hover {
-  background: #faf9f7;
-}
-
-/* CARD STYLE */
+/* CARD STYLE — MATCHING YOUR SAMPLE */
 .card {
-  margin-top: 30px;
-  padding: 22px;
-  background: white;
-  border-radius: 14px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    margin-top: 30px;
+    padding: 22px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
 }
+
 .card h3 {
-  margin-top: 0;
-  font-size: 20px;
-  color: #154d2e;
+    margin-top: 0;
+    font-size: 20px;
+    color: #154d2e;
 }
+
 .card p {
-  margin: 5px 0;
-  font-size: 15px;
+    margin: 6px 0;
+    font-size: 15px;
 }
 
-/* MAP */
 .map-container {
-  margin-top: 15px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    margin-top: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-/* BUTTONS */
+/* BUTTON */
 .btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 18px;
-  background: #145532;
-  color: white;
-  border-radius: 6px;
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 18px;
+    background: #145532;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
 }
 .btn:hover {
-  background: #1e7445;
+    background: #1e7445;
 }
 
 </style>
+
 </head>
 <body>
 
@@ -155,77 +113,111 @@ main {
   <nav>
     <a href="home.html">Home</a>
     <a href="tourist.html">Tourist Spots</a>
-    <a class="active">Terminals</a>
-    <a href="#">Routes</a>
-    <a href="#">Fares</a>
+    <a href="#">Terminals</a>
   </nav>
 </header>
 
 <main>
 
-  <h1 class="title">Jeepney Terminals & Routes</h1>
-  <p class="subtitle">Find terminal locations and routes to navigate Baguio City.</p>
+    <h1 class="title">Jeepney Terminals & Routes</h1>
+    <p class="subtitle">Navigate Baguio's top destinations using local jeepneys.</p>
 
-  <!-- SEARCH -->
-  <div class="search-box">
-    <input type="text" placeholder="Search terminal or destination…">
-    <button>🔎 Search</button>
-  </div>
-
-  <!-- TERMINAL TABLE -->
-  <table class="terminal-table">
-    <thead>
-      <tr>
-        <th>Terminal Name</th>
-        <th>Address / Landmark</th>
-        <th>Common Destinations</th>
-        <th>Operating Hours</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td><strong>Baguio Central Terminal</strong></td>
-        <td>Leonard Wood Rd., near Burnham Park</td>
-        <td>La Trinidad, Atok, Benguet Market</td>
-        <td>05:00 AM – 10:00 PM</td>
-      </tr>
-
-      <tr>
-        <td><strong>Slaughter House Terminal</strong></td>
-        <td>Gov. Pack Rd., Slaughter House</td>
-        <td>Kias, Asin, Tublay, Bokod</td>
-        <td>05:30 AM – 08:00 PM</td>
-      </tr>
-
-      <tr>
-        <td><strong>SM Baguio Jeepney Terminal</strong></td>
-        <td>SM Baguio, Harrison Road</td>
-        <td>Mines View, Wright Park</td>
-        <td>07:00 AM – 09:00 PM</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <!-- BOTANICAL GARDEN ROUTE CARD -->
-  <div class="card">
-    <h3>🌿 Jeepney Route: Botanical Garden → Pacdal Terminal → Mines View</h3>
-
-    <p><strong>Location:</strong> Botanical Garden, Leonard Wood Road, Baguio City</p>
-    <p><strong>Fare Rate:</strong> ₱12.00 – ₱15.00</p>
-    <p><strong>Route:</strong> Botanical Garden → Pacdal Circle → Mines View Park</p>
-
-    <div class="map-container">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d966.9936095178726!2d120.613691!3d16.415307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3391a144c71e80d1%3A0x7d90713b8bfdcf7e!2sBotanical%20Garden%20(Baguio)!5e0!3m2!1sen!2sph!4v1700000000000"
-        width="100%" height="330" style="border:0;" allowfullscreen="" loading="lazy">
-      </iframe>
-    </div>
-
-    <a class="btn" href="#">View on Map</a>
-  </div>
+    <div id="guide-container"></div>
 
 </main>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const touristSpots = {
+        "Mines View Park": {
+            jeep_route: "Mines View Jeepney",
+            terminal: "F. Calderon Street (near Session Road / Landbank)",
+            maps: "F+Calderon+Street+Baguio",
+            notes: "Also passes Botanical Garden, The Mansion, and Wright Park.",
+            fare: "Approx. ₱15"
+        },
+        "Botanical Garden": {
+            jeep_route: "Mines View Jeepney",
+            terminal: "F. Calderon Street (near Session Road / Landbank)",
+            maps: "F+Calderon+Street+Baguio",
+            notes: "Ask driver to drop you at the Botanical Garden entrance.",
+            fare: "Approx. ₱15"
+        },
+        "The Mansion": {
+            jeep_route: "Mines View Jeepney",
+            terminal: "F. Calderon Street (near Session Road / Landbank)",
+            maps: "F+Calderon+Street+Baguio",
+            notes: "Get off at Wright Park.",
+            fare: "Approx. ₱15"
+        },
+        "Camp John Hay": {
+            jeep_route: "Scout Barrio or Loakan Jeepney",
+            terminal: "East side of Burnham Park (Harrison Road)",
+            maps: "Harrison+Road+Baguio",
+            notes: "Jeep drops you at the John Hay gate.",
+            fare: "Approx. ₱13"
+        },
+        "Lourdes Grotto": {
+            jeep_route: "Dominican Hill / Lourdes Jeepney",
+            terminal: "Kayang Street (near Baguio Market)",
+            maps: "Kayang+Street+Baguio",
+            notes: "Drop-off is at the foot of the grotto stairs.",
+            fare: "Starts at ₱13"
+        },
+        "Mirador Heritage Park": {
+            jeep_route: "Dominican Hill / Lourdes Jeepney",
+            terminal: "Kayang Street (near Baguio Market)",
+            maps: "Kayang+Street+Baguio",
+            notes: "A short walk from Lourdes Grotto.",
+            fare: "Starts at ₱13"
+        },
+        "Good Shepherd Convent": {
+            jeep_route: "Mines View Jeepney",
+            terminal: "F. Calderon Street",
+            maps: "F+Calderon+Street+Baguio",
+            notes: "A short walk from Mines View Park.",
+            fare: "Approx. ₱15"
+        },
+    };
+
+    const container = document.getElementById("guide-container");
+
+    for (const spot in touristSpots) {
+        const info = touristSpots[spot];
+
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        if (info.jeep_route.includes("None")) {
+            card.classList.add("no-jeep");
+        }
+
+        // BUILD MAP URL
+        let mapsUrl = "#";
+        if (info.maps !== "") {
+            mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${info.maps}`;
+        }
+
+        card.innerHTML = `
+            <h3>📍 ${spot}</h3>
+            <p><strong>Jeep Route:</strong> ${info.jeep_route}</p>
+            <p><strong>Terminal:</strong> ${info.terminal}</p>
+            <p><strong>Fare:</strong> ${info.fare}</p>
+            <p><strong>Notes:</strong> ${info.notes}</p>
+
+            <a class="btn" 
+               href="${mapsUrl}" 
+               target="_blank" 
+               ${info.maps === "" ? "style='pointer-events:none;opacity:0.5;'" : ""}>
+               View Route to Terminal
+            </a>
+        `;
+
+        container.appendChild(card);
+    }
+});
+</script>
+
 
 </body>
 </html>
