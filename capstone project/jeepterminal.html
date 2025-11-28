@@ -203,55 +203,61 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const spots = {
-        "📍Mines View Park": {
-          jeep_route: "Mines View Jeepney",
-          terminal: "F. Calderon Street (near Session Road / Landbank)",
-          notes: "Also passes Botanical Garden, The Mansion, and Wright Park.",
-          fare: "Approx. ₱15",
-          maps: "F+Calderon+Street+Baguio",
-        },
-        "📍Botanical Garden": {
-          jeep_route: "Mines View Jeepney",
-          terminal: "F. Calderon Street (near Session Road / Landbank)",
-          notes: "Ask driver to drop you at the Botanical Garden entrance.",
-          fare: "Approx. ₱15",
-          maps: "F+Calderon+Street+Baguio",
-        },
-        "📍The Mansion": {
-          jeep_route: "Mines View Jeepney",
-          terminal: "F. Calderon Street (near Session Road / Landbank)",
-          notes: "Get off at Wright Park.",
-          fare: "Approx. ₱15",
-          maps: "F+Calderon+Street+Baguio",
-        },
-        "📍Camp John Hay": {
-          jeep_route: "Scout Barrio or Loakan Jeepney",
-          terminal: "East side of Burnham Park (Harrison Road)",
-          notes: "Jeep drops you at the John Hay gate.",
-          fare: "Approx. ₱13",
-          maps: "Harrison+Road+Baguio",
-        },
-        "📍Lourdes Grotto": {
-          jeep_route: "Dominican Hill / Lourdes Jeepney",
-          terminal: "Kayang Street (near Baguio Market)",
-          notes: "Drop-off is at the foot of the grotto stairs.",
-          fare: "Starts at ₱13",
-          maps: "Kayang+Street+Baguio",
-        },
-        "📍Mirador Heritage Park": {
-          jeep_route: "Dominican Hill / Lourdes Jeepney",
-          terminal: "Kayang Street (near Baguio Market)",
-          notes: "A short walk from Lourdes Grotto.",
-          fare: "Starts at ₱13",
-          maps: "Kayang+Street+Baguio",
-        },
-        "📍Good Shepherd Convent": {
-          jeep_route: "Mines View Jeepney",
-          terminal: "F. Calderon Street",
-          notes: "A short walk from Mines View Park.",
-          fare: "Approx. ₱15",
-          maps: "F+Calderon+Street+Baguio",
-        },
+     "📍Botanical Garden": {
+  jeep_route: "Mines View Jeepney",
+  terminal: "F. Calderon Street (near Session Road / Landbank)",
+  notes: "Ask driver to drop you at the Botanical Garden entrance.",
+  fare: "Approx. ₱15",
+  maps: "F+Calderon+Street+Baguio",
+},
+
+"📍Mines View Park": {
+  jeep_route: "Mines View Jeepney",
+  terminal: "F. Calderon Street (near Session Road / Landbank)",
+  notes: "Also passes Botanical Garden, The Mansion, and Wright Park.",
+  fare: "Approx. ₱15",
+  maps: "F+Calderon+Street+Baguio",
+},
+
+"📍The Mansion": {
+  jeep_route: "Mines View Jeepney",
+  terminal: "F. Calderon Street (near Session Road / Landbank)",
+  notes: "Get off at Wright Park.",
+  fare: "Approx. ₱15",
+  maps: "F+Calderon+Street+Baguio",
+},
+
+"📍Camp John Hay": {
+  jeep_route: "Scout Barrio or Loakan Jeepney",
+  terminal: "East side of Burnham Park (Harrison Road)",
+  notes: "Jeep drops you at the John Hay gate.",
+  fare: "Approx. ₱13",
+  maps: "Harrison+Road+Baguio",
+},
+
+"📍Lourdes Grotto": {
+  jeep_route: "Dominican Hill / Lourdes Jeepney",
+  terminal: "Kayang Street (near Baguio Market)",
+  notes: "Drop-off is at the foot of the grotto stairs.",
+  fare: "Starts at ₱13",
+  maps: "Kayang+Street+Baguio",
+},
+
+"📍Good Shepherd Convent": {
+  jeep_route: "Mines View Jeepney",
+  terminal: "F. Calderon Street",
+  notes: "A short walk from Mines View Park.",
+  fare: "Approx. ₱15",
+  maps: "F+Calderon+Street+Baguio",
+},
+
+"📍Mirador Heritage & Eco-Spirituality Park": {
+  jeep_route: "Dominican Hill / Lourdes Jeepney",
+  terminal: "Kayang Street (near Baguio Market)",
+  notes: "A short walk from Lourdes Grotto.",
+  fare: "Starts at ₱13",
+  maps: "Kayang+Street+Baguio",
+},
       };
 
       const container = document.getElementById("guide-container");
