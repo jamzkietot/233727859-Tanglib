@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lourdes Grotto | Baguio Track</title>
 
+<!-- LEAFLET GIS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 <style>
 /* GENERAL */
 body {
@@ -13,7 +17,6 @@ body {
   background: #f3ebdb;
   color: #2c2c2c;
 }
-
 a { text-decoration: none; }
 
 /* HEADER */
@@ -43,14 +46,13 @@ nav a.active {
   color: #d8c7a0;
 }
 
-/* MAIN */
 main {
   max-width: 1280px;
   margin: 25px auto;
   padding: 0 20px;
 }
 
-/* TOP GRID IMAGE + INFO */
+/* TOP GRID */
 .top-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -58,7 +60,6 @@ main {
   margin-bottom: 25px;
 }
 
-/* IMAGE LEFT SIDE */
 .hero-side-img {
   width: 100%;
   height: 330px;
@@ -68,12 +69,9 @@ main {
   cursor: pointer;
   transition: 0.3s ease;
 }
+.hero-side-img:hover { transform: scale(1.03); }
 
-.hero-side-img:hover {
-  transform: scale(1.03);
-}
-
-/* IMAGE POPUP */
+/* LIGHTBOX */
 #imgPopup {
   display: none;
   position: fixed;
@@ -84,19 +82,11 @@ main {
   justify-content: center;
   align-items: center;
 }
-
 #imgPopup img {
   width: 90%;
   max-width: 900px;
   border-radius: 12px;
-  animation: zoomIn 0.3s ease;
 }
-
-@keyframes zoomIn {
-  from { transform: scale(0.7); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
 #closePopup {
   position: fixed;
   top: 25px;
@@ -120,29 +110,26 @@ main {
   color: #154d2e;
 }
 
-/* TITLES */
 .title {
   font-size: 32px;
   color: #154d2e;
   font-weight: 700;
-  margin-top: 10px;
 }
-
 .subtitle {
   margin-top: -5px;
   font-size: 15px;
   color: #666;
 }
 
-/* MAP CARD */
-.map-card iframe {
-  border-radius: 10px;
+/* GIS MAP */
+#realMap {
   width: 100%;
-  height: 320px;
-  border: none;
+  height: 350px;
+  border-radius: 10px;
+  margin-top: 15px;
 }
 
-/* TWO-COLUMN LAYOUT */
+/* GRID LAYOUT */
 .grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -150,7 +137,6 @@ main {
   margin-top: 25px;
 }
 
-/* BACK BUTTON */
 .back {
   display: inline-block;
   margin-top: 20px;
@@ -159,14 +145,12 @@ main {
   color: #fff;
   border-radius: 6px;
 }
-
 .back:hover { background: #187842; }
 
 @media (max-width: 900px) {
   .grid, .top-grid {
     grid-template-columns: 1fr;
   }
-
   .hero-side-img {
     height: 250px;
   }
@@ -187,59 +171,57 @@ main {
 
 <main>
 
-  <!-- TOP SECTION -->
   <div class="top-grid">
     <img src="lgroto.jpg" class="hero-side-img" id="openImage" alt="Lourdes Grotto">
 
     <div class="card">
       <h3>Visitor Information</h3>
-      <p><strong>📍 Location:</strong> Dominican Hill Road, Baguio City</p>
+      <p><strong>📍 Location:</strong> Dominican Hill Road, Mirador Hill, Baguio City</p>
+      <p><strong>🧭 Coordinates:</strong> 16.40999° N, 120.58088° E</p>
       <p><strong>💰 Entrance Fee:</strong> Free</p>
       <p><strong>🕕 Best Time to Visit:</strong> Early morning or sunset</p>
-      <p><strong>📌 Highlights:</strong> 252-step pilgrimage stairs • Scenic hilltop view • Peaceful prayer site</p>
+      <p><strong>📌 Highlights:</strong> 252-step pilgrimage stairs • Scenic views • Marian shrine</p>
     </div>
   </div>
 
   <h1 class="title">Visit the Lourdes Grotto</h1>
-  <p class="subtitle">A sacred pilgrimage site offering peace, reflection, and beautiful views of Baguio City.</p>
+  <p class="subtitle">A sacred pilgrimage site offering peace, reflection, and a breathtaking view of Baguio City.</p>
 
   <div class="grid">
-
-    <!-- LEFT SIDE -->
     <div>
+
       <div class="card">
         <h3>About Lourdes Grotto</h3>
         <p>
-          The <strong>Our Lady of Lourdes Grotto</strong> is one of Baguio City’s most visited religious landmarks.
-          Devotees climb <strong>252 steps</strong> leading to the statue of the Blessed Virgin Mary, 
-          symbolizing sacrifice and prayer. The hilltop offers a serene environment perfect for meditation 
-          and provides an overlooking view of Baguio.
+          The <strong>Our Lady of Lourdes Grotto</strong> is one of Baguio City's most iconic religious landmarks.
+          Devotees climb the <strong>252 steps</strong> to reach the image of the Blessed Virgin Mary, symbolizing
+          sacrifice and devotion. From the top, visitors can enjoy a peaceful atmosphere and scenic hilltop views.
         </p>
       </div>
 
-      <div class="card map-card" style="margin-top: 20px;">
+      <!-- GIS MAP -->
+      <div class="card" style="margin-top: 20px;">
         <h3>Map Location</h3>
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.233989989168!2d120.583775!3d16.409344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1a32f3b6db5b%3A0xf133f8e09cc9b65d!2sOur%20Lady%20of%20Lourdes%20Grotto!5e0!3m2!1sen!2sph!4v1730155689211!5m2!1sen!2sph"
-          loading="lazy"></iframe>
+        <p style="font-size:14px;color:#555;margin-bottom:10px;">
+          This interactive map shows the exact location of Lourdes Grotto.
+        </p>
+        <div id="realMap"></div>
       </div>
+
     </div>
 
-    <!-- RIGHT SIDE COLUMN -->
     <div>
       <div class="card">
-        <h3>Nearby Spots & Attractions</h3>
+        <h3>Nearby Attractions</h3>
         <ul>
           <li>🏰 Dominican Hill & Diplomat Hotel</li>
-          <li>🌄 Mirador Heritage and Eco-Spiritual Center</li>
-          <li>🕯️ Arashiyama Bamboo Grove (Mirador)</li>
-          <li>🌿 BenCab Museum (10 mins away)</li>
-          <li>🏞️ Tam-awan Village</li>
-          <li>☕ Local cafés along Dominican Hill</li>
+          <li>🌄 Mirador Heritage & Eco-Spiritual Center</li>
+          <li>🎋 Arashiyama Bamboo Grove</li>
+          <li>☕ Cafés along Mirador Hill</li>
+          <li>🎨 BenCab Museum (10 mins)</li>
         </ul>
       </div>
     </div>
-
   </div>
 
   <a href="tourist.html" class="back">← Back to Tourist Spots</a>
@@ -252,18 +234,29 @@ main {
   <img src="lgroto.jpg" alt="Lourdes Grotto">
 </div>
 
+<!-- GIS SCRIPT -->
 <script>
+// Lightbox
 const popup = document.getElementById("imgPopup");
-const openImg = document.getElementById("openImage");
-const closePopup = document.getElementById("closePopup");
+document.getElementById("openImage").onclick = () => popup.style.display = "flex";
+document.getElementById("closePopup").onclick = () => popup.style.display = "none";
+popup.onclick = (e) => { if (e.target === popup) popup.style.display = "none"; };
 
-openImg.onclick = () => popup.style.display = "flex";
-closePopup.onclick = () => popup.style.display = "none";
+// Initialize GIS Map (accurate coordinates)
+var map = L.map('realMap').setView([16.40999, 120.58088], 17);
 
-popup.onclick = (e) => {
-  if (e.target === popup) popup.style.display = "none";
-};
+// Load OpenStreetMap Tiles
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19
+}).addTo(map);
+
+// Tourist Spot Marker
+L.marker([16.40999, 120.58088])
+  .addTo(map)
+  .bindPopup("<b>Our Lady of Lourdes Grotto</b><br>Mirador Hill, Baguio City")
+  .openPopup();
 </script>
 
 </body>
 </html>
+  
