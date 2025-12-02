@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mines View Park | Baguio Track</title>
 
+<!-- LEAFLET GIS CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
 <style>
 /* GENERAL */
 body {
@@ -13,7 +16,6 @@ body {
   background: #f3ebdb;
   color: #2c2c2c;
 }
-
 a { text-decoration: none; }
 
 /* HEADER */
@@ -25,23 +27,9 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-
-header h2 {
-  margin: 0;
-  font-size: 22px;
-  font-weight: 600;
-}
-
-nav a {
-  color: #fff;
-  margin-left: 25px;
-  font-weight: 500;
-}
-
-nav a:hover,
-nav a.active {
-  color: #d8c7a0;
-}
+header h2 { margin: 0; font-size: 22px; font-weight: 600; }
+nav a { color: #fff; margin-left: 25px; font-weight: 500; }
+nav a:hover, nav a.active { color: #d8c7a0; }
 
 /* MAIN */
 main {
@@ -50,15 +38,13 @@ main {
   padding: 0 20px;
 }
 
-/* TOP GRID IMAGE + VISITOR INFO */
+/* TOP GRID IMAGE + INFO */
 .top-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 25px;
   margin-bottom: 25px;
 }
-
-/* IMAGE LEFT SIDE */
 .hero-side-img {
   width: 100%;
   height: 330px;
@@ -68,12 +54,9 @@ main {
   cursor: pointer;
   transition: 0.3s ease;
 }
+.hero-side-img:hover { transform: scale(1.03); }
 
-.hero-side-img:hover {
-  transform: scale(1.03);
-}
-
-/* IMAGE POPUP (LIGHTBOX) */
+/* LIGHTBOX */
 #imgPopup {
   display: none;
   position: fixed;
@@ -84,19 +67,11 @@ main {
   justify-content: center;
   align-items: center;
 }
-
 #imgPopup img {
   width: 90%;
   max-width: 900px;
   border-radius: 12px;
-  animation: zoomIn 0.3s ease;
 }
-
-@keyframes zoomIn {
-  from { transform: scale(0.7); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
 #closePopup {
   position: fixed;
   top: 25px;
@@ -114,35 +89,21 @@ main {
   border-radius: 12px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
-
-.card h3 {
-  margin-top: 0;
-  color: #154d2e;
-}
+.card h3 { margin-top: 0; color: #154d2e; }
 
 /* TITLES */
-.title {
-  font-size: 32px;
-  color: #154d2e;
-  font-weight: 700;
-  margin-top: 10px;
-}
+.title { font-size: 32px; color: #154d2e; font-weight: 700; }
+.subtitle { margin-top: -5px; font-size: 15px; color: #666; }
 
-.subtitle {
-  margin-top: -5px;
-  font-size: 15px;
-  color: #666;
-}
-
-/* MAP */
-.map-card iframe {
-  border-radius: 10px;
+/* GIS MAP */
+#map {
   width: 100%;
-  height: 320px;
-  border: none;
+  height: 350px;
+  border-radius: 10px;
+  margin-top: 15px;
 }
 
-/* TWO-COLUMN LAYOUT */
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -158,17 +119,11 @@ main {
   color: #fff;
   border-radius: 6px;
 }
-
 .back:hover { background: #187842; }
 
 @media (max-width: 900px) {
-  .grid, .top-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-side-img {
-    height: 250px;
-  }
+  .grid, .top-grid { grid-template-columns: 1fr; }
+  .hero-side-img { height: 250px; }
 }
 </style>
 </head>
@@ -185,82 +140,85 @@ main {
 </header>
 
 <main>
-
-  <!-- TOP SECTION WITH IMAGE LEFT + INFO RIGHT -->
   <div class="top-grid">
-
-    <!-- CLICKABLE IMAGE -->
     <img src="minesviewpark.jpg" class="hero-side-img" id="openImage" alt="Mines View Park">
-
     <div class="card">
       <h3>Visitor Information</h3>
       <p><strong>📍 Location:</strong> Mines View Road, Baguio City</p>
-      <p><strong>💰 Entrance Fee:</strong> ₱10 (as of 2025)</p>
+      <p><strong>💰 Entrance Fee:</strong> ₱10 (2025)</p>
       <p><strong>🕕 Opening Hours:</strong> 6:00 AM – 8:00 PM</p>
-      <p><strong>📌 Highlights:</strong> Panoramic mountain view • Traditional Igorot attire photos • Souvenir stalls • Horse photo ops</p>
-
+      <p><strong>📌 Highlights:</strong> Viewing deck • Souvenirs • Photos with Igorot attire</p>
     </div>
   </div>
 
   <h1 class="title">Witness the Scenic Beauty of Mines View Park</h1>
-  <p class="subtitle">A panoramic view of Benguet’s mountains, valleys, and old mining town of Itogon.</p>
+  <p class="subtitle">A stunning overlook of Benguet’s valleys and mountains.</p>
 
   <div class="grid">
-
-    <!-- LEFT SIDE CONTENT -->
     <div>
       <div class="card">
         <h3>About Mines View Park</h3>
         <p>
-          <strong>Mines View Park</strong> is one of Baguio’s most famous viewing decks, offering breathtaking
-          overlooks of the mining community of Itogon and the vast Cordillera mountains. Visitors can enjoy
-          photo opportunities, horseback riding, local stalls, and classic Baguio snacks.
+          Mines View Park is a top tourist spot offering panoramic views of Itogon and the Cordillera mountains.
+          Visitors enjoy the viewing deck, local crafts, food stalls, and classic Baguio activities.
         </p>
       </div>
 
-      <div class="card map-card">
+      <!-- GIS MAP -->
+      <div class="card" style="margin-top: 20px;">
         <h3>Map Location</h3>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.248805740407!2d120.623297475072!3d16.4208905843023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1a4cb249bd7d%3A0x1b5f39fa908db8b3!2sMines%20View%20Park!5e0!3m2!1sen!2sph!4v1730250000000!5m2!1sen!2sph"
-          loading="lazy"></iframe>
+        <p style="font-size:14px;color:#555;margin-bottom:10px;">
+          This interactive map shows the exact location of Mines View Park.
+        </p>
+        <div id="map"></div>
       </div>
     </div>
 
-    <!-- RIGHT SIDE CONTENT -->
     <div>
       <div class="card">
-        <h3>Nearby Restaurants & Attractions</h3>
+        <h3>Nearby Attractions</h3>
         <ul>
-          <li>🥤 <strong>Good Shepherd Convent</strong> – Famous Ube Jam (2 mins walk)</li>
-          <li>🧵 <strong>Souvenir Stalls</strong> – Silverworks, woven items, pasalubong</li>
-          <li>🐴 <strong>Horseback Riding</strong> – Near entrance area</li>
+          <li>🥤 Good Shepherd – 2 mins walk</li>
+          <li>🧵 Souvenir Shops</li>
+          <li>🐴 Horseback Photos</li>
         </ul>
       </div>
     </div>
-
   </div>
 
   <a href="tourist.html" class="back">← Back to Tourist Spots</a>
-
 </main>
 
-<!-- POPUP IMAGE / LIGHTBOX -->
+<!-- POPUP IMAGE -->
 <div id="imgPopup">
   <span id="closePopup">&times;</span>
   <img src="minesviewpark.jpg" alt="Mines View Park">
 </div>
 
+<!-- LEAFLET GIS JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
+// IMAGE POPUP
 const popup = document.getElementById("imgPopup");
 const openImg = document.getElementById("openImage");
-const closePopup = document.getElementById("closePopup");
+const closePopupBtn = document.getElementById("closePopup");
 
 openImg.onclick = () => popup.style.display = "flex";
-closePopup.onclick = () => popup.style.display = "none";
+closePopupBtn.onclick = () => popup.style.display = "none";
+popup.onclick = e => { if (e.target === popup) popup.style.display = "none"; };
 
-popup.onclick = (e) => {
-  if (e.target === popup) popup.style.display = "none";
-};
+// GIS MAP (Leaflet)
+const map = L.map('map').setView([16.420890, 120.630000], 16);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap'
+}).addTo(map);
+
+// Mines View Park marker
+L.marker([16.420890, 120.630000])
+  .addTo(map)
+  .bindPopup("<b>Mines View Park</b><br>Baguio City")
+  .openPopup();
 </script>
 
 </body>
