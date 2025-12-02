@@ -229,7 +229,7 @@ main {
   <img src="botanicalpic.png" alt="Botanical Garden">
 </div>
 
-<!-- MAP SCRIPT -->
+<!-- GIS SCRIPT -->
 <script>
 // Lightbox
 const popup = document.getElementById("imgPopup");
@@ -237,8 +237,8 @@ document.getElementById("openImage").onclick = () => popup.style.display = "flex
 document.getElementById("closePopup").onclick = () => popup.style.display = "none";
 popup.onclick = (e) => { if (e.target === popup) popup.style.display = "none"; };
 
-// Initialize Map
-var map = L.map('realMap').setView([16.4154, 120.6090], 16);
+// Initialize GIS Map
+var map = L.map('realMap').setView([16.4150, 120.6130], 16);
 
 // Load OpenStreetMap Tiles
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -246,9 +246,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Tourist Spot Marker ONLY
-L.marker([16.4154, 120.6090])
+L.marker([16.4150, 120.6130])
   .addTo(map)
-  .bindPopup("<b>Botanical Garden</b><br>Baguio City");
+  .bindPopup("<b>Baguio Botanical Garden</b><br>Baguio City");
 </script>
 
 </body>
