@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Botanical Garden | Baguio Track</title>
 
+<!-- LEAFLET GIS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 <style>
 /* GENERAL */
 body {
@@ -13,7 +17,6 @@ body {
   background: #f3ebdb;
   color: #2c2c2c;
 }
-
 a { text-decoration: none; }
 
 /* HEADER */
@@ -43,14 +46,13 @@ nav a.active {
   color: #d8c7a0;
 }
 
-/* MAIN */
 main {
   max-width: 1280px;
   margin: 25px auto;
   padding: 0 20px;
 }
 
-/* TOP GRID IMAGE + VISITOR INFO */
+/* TOP GRID */
 .top-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -58,7 +60,6 @@ main {
   margin-bottom: 25px;
 }
 
-/* IMAGE LEFT SIDE */
 .hero-side-img {
   width: 100%;
   height: 330px;
@@ -68,12 +69,9 @@ main {
   cursor: pointer;
   transition: 0.3s ease;
 }
+.hero-side-img:hover { transform: scale(1.03); }
 
-.hero-side-img:hover {
-  transform: scale(1.03);
-}
-
-/* IMAGE POPUP (LIGHTBOX) */
+/* LIGHTBOX */
 #imgPopup {
   display: none;
   position: fixed;
@@ -84,19 +82,11 @@ main {
   justify-content: center;
   align-items: center;
 }
-
 #imgPopup img {
   width: 90%;
   max-width: 900px;
   border-radius: 12px;
-  animation: zoomIn 0.3s ease;
 }
-
-@keyframes zoomIn {
-  from { transform: scale(0.7); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
 #closePopup {
   position: fixed;
   top: 25px;
@@ -120,29 +110,26 @@ main {
   color: #154d2e;
 }
 
-/* TITLES */
 .title {
   font-size: 32px;
   color: #154d2e;
   font-weight: 700;
-  margin-top: 10px;
 }
-
 .subtitle {
   margin-top: -5px;
   font-size: 15px;
   color: #666;
 }
 
-/* MAP */
-.map-card iframe {
-  border-radius: 10px;
+/* GIS MAP */
+#realMap {
   width: 100%;
-  height: 320px;
-  border: none;
+  height: 350px;
+  border-radius: 10px;
+  margin-top: 15px;
 }
 
-/* TWO-COLUMN LAYOUT */
+/* GRID LAYOUT */
 .grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -158,14 +145,12 @@ main {
   color: #fff;
   border-radius: 6px;
 }
-
 .back:hover { background: #187842; }
 
 @media (max-width: 900px) {
   .grid, .top-grid {
     grid-template-columns: 1fr;
   }
-
   .hero-side-img {
     height: 250px;
   }
@@ -186,10 +171,7 @@ main {
 
 <main>
 
-  <!-- TOP SECTION WITH IMAGE LEFT + INFO RIGHT -->
   <div class="top-grid">
-
-    <!-- CLICKABLE IMAGE -->
     <img src="botanicalpic.png" class="hero-side-img" id="openImage" alt="Botanical Garden">
 
     <div class="card">
@@ -197,8 +179,7 @@ main {
       <p><strong>📍 Location:</strong> Leonard Wood Road, Baguio City</p>
       <p><strong>💰 Entrance Fee:</strong> ₱100</p>
       <p><strong>🕕 Opening Hours:</strong> 6:00 AM – 6:00 PM</p>
-      <p><strong>📌 Highlights:</strong> Cultural villages • Lush walking paths • Photo spots with statues • Igorot heritage displays</p>
-
+      <p><strong>📌 Highlights:</strong> Cultural villages • Sculptures • Walking paths</p>
     </div>
   </div>
 
@@ -206,63 +187,68 @@ main {
   <p class="subtitle">Experience nature, culture, and peace in the heart of Baguio City.</p>
 
   <div class="grid">
-
-    <!-- LEFT SIDE CONTENT -->
     <div>
+
       <div class="card">
         <h3>About Botanical Garden</h3>
-        <p>
-          The <strong>Botanical Garden</strong> in Baguio City is a lush sanctuary of native and imported plants.
-          Visitors can enjoy peaceful walks, admire Cordilleran sculptures, and explore native huts reflecting
-          the heritage of the region.
-        </p>
+        <p>The Botanical Garden in Baguio City is a beautiful mix of native and international plants, sculptures, and peaceful walking paths. It reflects the heritage and artistry of the Cordilleras.</p>
       </div>
 
-      <div class="card map-card" style="margin-top: 20px;">
+      <!-- GIS MAP START -->
+      <div class="card" style="margin-top: 20px;">
         <h3>Map Location</h3>
-
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.3417868026223!2d120.60702569999999!3d16.4154233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1a19b11a0b2d%3A0x7f8f7c4b2db3ac4f!2sBotanical%20Garden%20-%20Baguio%20City!5e0!3m2!1sen!2sph!4v1732555555555!5m2!1sen!2sph"
-          loading="lazy"></iframe>
+        <p style="font-size:14px;color:#555;margin-bottom:10px;">
+          This interactive map shows the exact location of Botanical Garden.
+        </p>
+        <div id="realMap"></div>
       </div>
+      <!-- GIS MAP END -->
+
     </div>
 
-    <!-- RIGHT SIDE -->
     <div>
       <div class="card">
-        <h3>Nearby Restaurants & Attractions</h3>
+        <h3>Nearby Attractions</h3>
         <ul>
-          <li>☕ <strong>Café Yagam</strong> – 2 mins walk</li>
-          <li>🍲 <strong>Arca’s Yard</strong> – 5 mins drive</li>
-          <li>🍴 <strong>Secret Garden</strong> – Korean-Italian restaurant</li>
-          <li>🏞️ <strong>Teacher’s Camp</strong> – Historic site nearby</li>
+          <li>☕ Café Yagam</li>
+          <li>🍴 Secret Garden Restaurant</li>
+          <li>🏞️ Teacher’s Camp</li>
+          <li>🍲 Arca’s Yard</li>
         </ul>
       </div>
     </div>
-
   </div>
 
   <a href="tourist.html" class="back">← Back to Tourist Spots</a>
 
 </main>
 
-<!-- POPUP IMAGE / LIGHTBOX -->
+<!-- POPUP IMAGE -->
 <div id="imgPopup">
   <span id="closePopup">&times;</span>
   <img src="botanicalpic.png" alt="Botanical Garden">
 </div>
 
+<!-- MAP SCRIPT -->
 <script>
+// Lightbox
 const popup = document.getElementById("imgPopup");
-const openImg = document.getElementById("openImage");
-const closePopup = document.getElementById("closePopup");
+document.getElementById("openImage").onclick = () => popup.style.display = "flex";
+document.getElementById("closePopup").onclick = () => popup.style.display = "none";
+popup.onclick = (e) => { if (e.target === popup) popup.style.display = "none"; };
 
-openImg.onclick = () => popup.style.display = "flex";
-closePopup.onclick = () => popup.style.display = "none";
+// Initialize Map
+var map = L.map('realMap').setView([16.4154, 120.6090], 16);
 
-popup.onclick = (e) => {
-  if (e.target === popup) popup.style.display = "none";
-};
+// Load OpenStreetMap Tiles
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19
+}).addTo(map);
+
+// Tourist Spot Marker ONLY
+L.marker([16.4154, 120.6090])
+  .addTo(map)
+  .bindPopup("<b>Botanical Garden</b><br>Baguio City");
 </script>
 
 </body>
