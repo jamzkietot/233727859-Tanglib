@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Good Shepherd Convent | Baguio Track</title>
 
+<!-- LEAFLET GIS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 <style>
 /* GENERAL */
 body {
@@ -14,7 +18,9 @@ body {
   color: #2c2c2c;
 }
 
-a { text-decoration: none; }
+a {
+  text-decoration: none;
+}
 
 /* HEADER */
 header {
@@ -50,7 +56,7 @@ main {
   padding: 0 20px;
 }
 
-/* TOP GRID IMAGE + INFO */
+/* TOP GRID */
 .top-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -58,7 +64,6 @@ main {
   margin-bottom: 25px;
 }
 
-/* IMAGE LEFT SIDE */
 .hero-side-img {
   width: 100%;
   height: 330px;
@@ -73,7 +78,7 @@ main {
   transform: scale(1.03);
 }
 
-/* IMAGE POPUP (LIGHTBOX) */
+/* LIGHTBOX POPUP */
 #imgPopup {
   display: none;
   position: fixed;
@@ -89,12 +94,6 @@ main {
   width: 90%;
   max-width: 900px;
   border-radius: 12px;
-  animation: zoomIn 0.3s ease;
-}
-
-@keyframes zoomIn {
-  from { transform: scale(0.7); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
 }
 
 #closePopup {
@@ -134,15 +133,15 @@ main {
   color: #666;
 }
 
-/* MAP */
-.map-card iframe {
-  border-radius: 10px;
+/* GIS MAP */
+#realMap {
   width: 100%;
-  height: 320px;
-  border: none;
+  height: 350px;
+  border-radius: 10px;
+  margin-top: 15px;
 }
 
-/* TWO-COLUMN LAYOUT */
+/* GRID LAYOUT */
 .grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -160,10 +159,14 @@ main {
   border-radius: 6px;
 }
 
-.back:hover { background: #187842; }
+.back:hover {
+  background: #187842;
+}
 
+/* RESPONSIVE */
 @media (max-width: 900px) {
-  .grid, .top-grid {
+  .grid,
+  .top-grid {
     grid-template-columns: 1fr;
   }
 
@@ -193,7 +196,7 @@ main {
 
     <div class="card">
       <h3>Visitor Information</h3>
-      <p><strong>📍 Location:</strong> Outlook Drive, Baguio City</p>
+      <p><strong>📍 Location:</strong> 15 Gibraltar Road, Mines View, Baguio City 2600</p>
       <p><strong>🕕 Operating Hours:</strong> 8:00 AM – 4:00 PM</p>
       <p><strong>💰 Entry Fee:</strong> Free</p>
       <p><strong>🎁 Famous For:</strong> Ube Jam, Strawberry Jam, Peanut Brittle</p>
@@ -201,38 +204,42 @@ main {
   </div>
 
   <h1 class="title">Visit the Good Shepherd Convent</h1>
-  <p class="subtitle">Home of Baguio’s famous ube jam and a peaceful place run by the Good Shepherd Sisters.</p>
+  <p class="subtitle">
+    Home of Baguio’s famous ube jam and a peaceful convent supporting local youth through scholarship programs.
+  </p>
 
   <div class="grid">
 
-    <!-- LEFT SIDE -->
+    <!-- LEFT COLUMN -->
     <div>
       <div class="card">
         <h3>About Good Shepherd Convent</h3>
         <p>
-          The <strong>Good Shepherd Convent</strong> is known across the Philippines for its delicious local products 
-          such as ube jam, strawberry jam, and peanut brittle. Each purchase helps fund the education of 
-          Cordillera youth through the Good Shepherd Scholarship Program.
+          The <strong>Good Shepherd Convent</strong> is known across the Philippines for its delicious local products,
+          including ube jam, strawberry jam, and peanut brittle. Each purchase helps support the education of Cordillera
+          youth through the Good Shepherd Scholarship Program.
         </p>
       </div>
 
-      <div class="card map-card" style="margin-top: 20px;">
+      <!-- MAP -->
+      <div class="card" style="margin-top: 20px;">
         <h3>Map Location</h3>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.2799545917973!2d120.616875075071!3d16.418854884304658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338f1cfe796938d5%3A0xaa1fd17f88d3d299!2sGood%20Shepherd%20Convent!5e0!3m2!1sen!2sph!4v1730112000000!5m2!1sen!2sph"
-          loading="lazy"></iframe>
+        <p style="font-size:14px;color:#555;margin-bottom:10px;">
+          This interactive map shows the exact location of Good Shepherd Convent.
+        </p>
+        <div id="realMap"></div>
       </div>
     </div>
 
-    <!-- RIGHT SIDE -->
+    <!-- RIGHT COLUMN -->
     <div>
       <div class="card">
         <h3>Nearby Spots & Attractions</h3>
         <ul>
-          <li>🌸 Mines View Park (5 mins away)</li>
+          <li>🌸 Mines View Park (5 mins walk)</li>
           <li>🛍️ Mines View Souvenir Stalls</li>
-          <li>☕ Coffee shops along Outlook Drive</li>
-          <li>🐎 Horseback Riding Area</li>
+          <li>☕ Coffee Shops along Outlook Drive</li>
+          <li>🐎 Horseback Riding Area nearby</li>
         </ul>
       </div>
     </div>
@@ -243,13 +250,15 @@ main {
 
 </main>
 
-<!-- POPUP IMAGE / LIGHTBOX -->
+<!-- LIGHTBOX POPUP -->
 <div id="imgPopup">
   <span id="closePopup">&times;</span>
   <img src="goods.jpg" alt="Good Shepherd Convent">
 </div>
 
+<!-- GIS SCRIPT -->
 <script>
+// Lightbox
 const popup = document.getElementById("imgPopup");
 const openImg = document.getElementById("openImage");
 const closePopup = document.getElementById("closePopup");
@@ -260,6 +269,18 @@ closePopup.onclick = () => popup.style.display = "none";
 popup.onclick = (e) => {
   if (e.target === popup) popup.style.display = "none";
 };
+
+// Leaflet GIS Map (Accurate coordinates)
+var map = L.map('realMap').setView([16.42233, 120.62613], 17);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19
+}).addTo(map);
+
+L.marker([16.42233, 120.62613])
+  .addTo(map)
+  .bindPopup("<b>Good Shepherd Convent</b><br>15 Gibraltar Rd, Baguio City")
+  .openPopup();
 </script>
 
 </body>
