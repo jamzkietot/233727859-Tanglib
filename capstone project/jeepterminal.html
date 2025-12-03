@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,7 +11,7 @@
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
   <style>
-    /* GLOBAL STYLES */
+    /* Global Styles */
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
@@ -18,9 +19,9 @@
       color: #2c2c2c;
     }
 
-    /* HEADER STYLES */
+    /* Header */
     header {
-      background: #145532; /* Dark Green Color */
+      background: #145532;
       color: #fff;
       padding: 14px 45px;
       display: flex;
@@ -35,15 +36,15 @@
     }
 
     .logo-area img {
-      width: 40px; /* Ensuring size matches the original */
+      width: 40px;
       height: 40px;
       border-radius: 50%;
     }
 
     header h2 {
       margin: 0;
-      font-size: 22px; /* Matching font size from the first design */
-      font-weight: 600; /* Font weight for emphasis */
+      font-size: 22px;
+      font-weight: 600;
     }
 
     nav a {
@@ -56,10 +57,10 @@
 
     nav a.active,
     nav a:hover {
-      color: #f2d7b5; /* Light color for active and hover states */
+      color: #f2d7b5;
     }
 
-    /* HERO SECTION */
+    /* Hero Section */
     .hero {
       background: linear-gradient(135deg, #9acf87, #6a9955);
       padding: 40px 45px;
@@ -81,7 +82,7 @@
       font-size: 18px;
     }
 
-    /* BACK BUTTON */
+    /* Back Button */
     .back-btn {
       background: #145532;
       color: white;
@@ -92,14 +93,14 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       transition: background-color 0.3s ease;
       display: inline-block;
-      margin-top: 20px; /* Adds space between the text and button */
+      margin-top: 20px;
     }
 
     .back-btn:hover {
       background: #1e7445;
     }
 
-    /* MAIN CONTENT */
+    /* Main Content */
     main {
       max-width: 1200px;
       margin: 0 auto 60px auto;
@@ -109,7 +110,7 @@
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
     }
 
-    /* GRID (Terminal Card Layout) */
+    /* Terminal Cards */
     .terminal-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -117,7 +118,6 @@
       padding: 20px 0;
     }
 
-    /* TERMINAL CARD */
     .terminal-card {
       background: white;
       border-radius: 14px;
@@ -151,18 +151,13 @@
       font-weight: 500;
     }
 
-    /* Tourist Spots Section */
     .tourist-spots {
       margin-top: 10px;
-      font-size: 15px;
+      font-size: 14px;
       color: #2c5d3f;
     }
 
-    .tourist-spots div {
-      margin-bottom: 6px;
-    }
-
-    /* MAP */
+    /* Map */
     #map {
       height: 550px;
       width: 100%;
@@ -171,7 +166,7 @@
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
     }
 
-    /* BUTTON */
+    /* Button */
     .locate-btn {
       background: #145532;
       color: white;
@@ -187,7 +182,7 @@
       background: #1b7045;
     }
 
-    /* INFO PANEL */
+    /* Info Panel */
     #infoPanel {
       margin-top: 25px;
       background: white;
@@ -195,7 +190,6 @@
       border-radius: 14px;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     }
-
   </style>
 </head>
 
@@ -222,16 +216,15 @@
       <h1>Discover Baguio's Jeepney Terminals</h1>
       <p>Explore jeepney terminals and find the best routes to your destination based on your current location.</p>
     </div>
-    <!-- MOVED BACK BUTTON BELOW HERO CONTENT -->
     <a href="home.html" class="back-btn">← Back to Home</a>
   </section>
 
   <main>
 
-    <!-- TERMINAL SELECTION GRID (Cards) -->
+    <!-- TERMINAL SELECTION GRID -->
     <div class="terminal-gallery">
       <!-- F. Calderon Terminal Card -->
-      <a href="#" class="terminal-card">
+      <a href="#" class="terminal-card" onclick="selectTerminal('F. Calderon')">
         <h3>📍 F. Calderon Terminal</h3>
         <p>Click to view directions</p>
         <div class="tourist-spots">
@@ -242,7 +235,7 @@
       </a>
 
       <!-- Scout Barrio Terminal Card -->
-      <a href="#" class="terminal-card">
+      <a href="#" class="terminal-card" onclick="selectTerminal('Scout Barrio Terminal')">
         <h3>📍 Scout Barrio Terminal</h3>
         <p>Click to view directions</p>
         <div class="tourist-spots">
@@ -251,7 +244,7 @@
       </a>
 
       <!-- Kayang Street Terminal Card -->
-      <a href="#" class="terminal-card">
+      <a href="#" class="terminal-card" onclick="selectTerminal('Kayang Street Terminal')">
         <h3>📍 Kayang Street Terminal</h3>
         <p>Click to view directions</p>
         <div class="tourist-spots">
@@ -272,24 +265,33 @@
   </main>
 
   <script>
-    /* --------------------------------------------------
-       1. TERMINALS + TOURIST SPOTS (Updated data)
-    -------------------------------------------------- */
+    // Terminal and Tourist Spot Data with Drop-off Notes
     const data = {
       "F. Calderon": {
-        terminalCoords: [16.41, 120.6],  // Updated coordinates for F. Calderon
+        terminalCoords: [16.41, 120.6],
+        spots: [
+          { name: "Botanical Garden", coords: [16.41668, 120.61603], note: "Tell the driver: 'Botanical Garden, please.'" },
+          { name: "Mines View Park", coords: [16.42073, 120.62715], note: "Say: 'Mines View Park, please.'" },
+          { name: "The Mansion", coords: [16.41798, 120.61721], note: "Let the driver know: 'Drop me at The Mansion.'" }
+        ],
       },
       "Scout Barrio Terminal": {
         terminalCoords: [16.41075, 120.59830],
+        spots: [
+          { name: "Camp John Hay", coords: [16.39997, 120.60674], note: "Tell the driver: 'Camp John Hay, please.'" }
+        ],
       },
       "Kayang Street Terminal": {
         terminalCoords: [16.41455, 120.59428],
-      }
+        spots: [
+          { name: "Lourdes Grotto", coords: [16.40847, 120.58535], note: "Say: 'Lourdes Grotto, please.'" },
+          { name: "Mirador Heritage Park", coords: [16.40986, 120.58712], note: "Tell the driver: 'Drop me at Mirador Heritage Park.'" },
+          { name: "Good Shepherd Convent", coords: [16.41542, 120.61559], note: "Let the driver know: 'Good Shepherd Convent.'" },
+        ],
+      },
     };
 
-    /* --------------------------------------------------
-       2. LEAFLET MAP INIT
-    -------------------------------------------------- */
+    // Initialize Map
     let map = L.map("map").setView([16.415, 120.595], 13);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
@@ -297,48 +299,38 @@
     let routeLayer = null;
     let terminalMarker = null;
 
-    /* --------------------------------------------------
-       3. ENABLE LIVE LOCATION
-    -------------------------------------------------- */
+    // Enable Live Location
     document.getElementById("locateBtn").onclick = () => {
       if (!navigator.geolocation) return alert("Geolocation not supported.");
 
       navigator.geolocation.watchPosition(pos => {
         const { latitude, longitude } = pos.coords;
-        console.log(`User location: ${latitude}, ${longitude}`);  // Debugging location
 
         if (!userMarker) {
-          // Create and add marker for user location
           userMarker = L.marker([latitude, longitude], {
             icon: L.divIcon({
               html: '<div class="gpsPulse"></div>',
               className: '',
-              iconSize: [16,16]
+              iconSize: [16, 16],
             })
           }).addTo(map);
         } else {
-          // Update user marker position as they move
           userMarker.setLatLng([latitude, longitude]);
         }
 
-        // Optionally center map on user position (if desired)
         map.setView([latitude, longitude], 15);
-      }, (err) => {
-        console.error('Error getting location:', err);
-        alert('Unable to retrieve location. Please ensure location services are enabled.');
+      }, err => {
+        alert("Unable to retrieve location. Please enable location services.");
       });
     };
 
-    /* --------------------------------------------------
-       4. SELECT TERMINAL AND SHOW DIRECTIONS
-    -------------------------------------------------- */
+    // Select Terminal and Show Directions
     function selectTerminal(terminal) {
-      const { terminalCoords } = data[terminal];
+      const { terminalCoords, spots } = data[terminal];
 
-      // Set map view to terminal coordinates and zoom level
       map.setView(terminalCoords, 15);
 
-      // Clear previous markers and route
+      // Remove previous markers and routes
       map.eachLayer(layer => {
         if (layer instanceof L.Marker) {
           map.removeLayer(layer);
@@ -348,13 +340,11 @@
         }
       });
 
-      // Add terminal marker
       terminalMarker = L.marker(terminalCoords)
         .addTo(map)
         .bindPopup(`<b>${terminal}</b>`)
         .openPopup();
 
-      // Show info panel for the selected terminal
       document.getElementById("infoPanel").innerHTML = `
         <h2>${terminal}</h2>
         <p>Generating walking route from your location...</p>
@@ -365,13 +355,18 @@
         return;
       }
 
-      // Draw walking route from user's location to terminal
       drawRoute(userMarker.getLatLng(), terminalCoords);
+
+      // Add Drop-off Points
+      spots.forEach(spot => {
+        L.marker(spot.coords)
+          .addTo(map)
+          .bindPopup(`<b>${spot.name}</b><br>${spot.note}`)
+          .openPopup();
+      });
     }
 
-    /* --------------------------------------------------
-       5. DRAW ROUTE USING OSRM (REAL STREET PATH)
-    -------------------------------------------------- */
+    // Draw Walking Route Using OSRM
     function drawRoute(start, end) {
       const url = `https://router.project-osrm.org/route/v1/foot/${start.lng},${start.lat};${end[1]},${end[0]}?overview=full&geometries=geojson`;
 
@@ -380,14 +375,12 @@
         .then(res => {
           const coords = res.routes[0].geometry.coordinates.map(c => [c[1], c[0]]);
 
-          // Remove previous route if it exists
           if (routeLayer) map.removeLayer(routeLayer);
 
-          // Add new route
           routeLayer = L.polyline(coords, {
             color: "#145532",
             weight: 6,
-            opacity: 0.9
+            opacity: 0.9,
           }).addTo(map);
 
           map.fitBounds(routeLayer.getBounds(), { padding: [40, 40] });
@@ -397,4 +390,5 @@
   </script>
 
 </body>
+
 </html>
