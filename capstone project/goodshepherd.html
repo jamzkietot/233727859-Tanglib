@@ -180,11 +180,18 @@ main {
 <body>
 
 <header>
-  <h2>Baguio Track</h2>
+
+  <div class="logo-area" style="display:flex;align-items:center;gap:12px;">
+    <img src="user_8801434.png" alt="User Profile" style="width:40px;height:40px;border-radius:50%;">
+    <h2 style="margin:0;font-size:22px;font-weight:600;">Baguio Track</h2>
+  </div>
+
   <nav>
     <a href="home.html">Home</a>
     <a href="tourist.html" class="active">Tourist Spots</a>
     <a href="jeepterminal.html">Terminals</a>
+    <a href="safety.html">Safety Tips</a>
+    <a href="about.html">About</a>
   </nav>
 </header>
 
@@ -270,7 +277,7 @@ popup.onclick = (e) => {
   if (e.target === popup) popup.style.display = "none";
 };
 
-// Leaflet GIS Map (Accurate coordinates)
+// Leaflet GIS Map
 var map = L.map('realMap').setView([16.42233, 120.62613], 17);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

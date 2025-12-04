@@ -29,7 +29,16 @@ header {
   align-items: center;
 }
 
-header h2 {
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo-area img {
+  width: 40px;
+  height: 40px;
+}
+.logo-area h2 {
   margin: 0;
   font-size: 22px;
   font-weight: 600;
@@ -40,7 +49,6 @@ nav a {
   margin-left: 25px;
   font-weight: 500;
 }
-
 nav a:hover,
 nav a.active {
   color: #d8c7a0;
@@ -161,11 +169,17 @@ main {
 <body>
 
 <header>
-  <h2>Baguio Track</h2>
+  <div class="logo-area">
+    <img src="user_8801434.png" alt="Logo">
+    <h2>Baguio Track</h2>
+  </div>
+
   <nav>
     <a href="home.html">Home</a>
     <a href="tourist.html" class="active">Tourist Spots</a>
     <a href="jeepterminal.html">Terminals</a>
+    <a href="safety.html">Safety Tips</a>
+    <a href="about.html">About</a>
   </nav>
 </header>
 
@@ -198,7 +212,6 @@ main {
         </p>
       </div>
 
-      <!-- GIS MAP -->
       <div class="card" style="margin-top: 20px;">
         <h3>Map Location</h3>
         <p style="font-size:14px;color:#555;margin-bottom:10px;">
@@ -241,15 +254,13 @@ document.getElementById("openImage").onclick = () => popup.style.display = "flex
 document.getElementById("closePopup").onclick = () => popup.style.display = "none";
 popup.onclick = (e) => { if (e.target === popup) popup.style.display = "none"; };
 
-// Initialize GIS Map (accurate coordinates)
+// GIS Map
 var map = L.map('realMap').setView([16.40999, 120.58088], 17);
 
-// Load OpenStreetMap Tiles
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19
 }).addTo(map);
 
-// Tourist Spot Marker
 L.marker([16.40999, 120.58088])
   .addTo(map)
   .bindPopup("<b>Our Lady of Lourdes Grotto</b><br>Mirador Hill, Baguio City")

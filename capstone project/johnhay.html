@@ -27,6 +27,16 @@
       justify-content: space-between;
       align-items: center;
     }
+    header .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    header .logo-area img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
     header h2 {
       margin: 0;
       font-size: 22px;
@@ -158,12 +168,19 @@
 
 <body>
 
+  <!-- FIXED HEADER (same with all pages) -->
   <header>
-    <h2>Baguio Track</h2>
+    <div class="logo-area">
+      <img src="user_8801434.png" alt="User Profile" />
+      <h2>Baguio Track</h2>
+    </div>
+
     <nav>
       <a href="home.html">Home</a>
       <a href="tourist.html" class="active">Tourist Spots</a>
       <a href="jeepterminal.html">Terminals</a>
+      <a href="safety.html">Safety Tips</a>
+      <a href="about.html">About</a>
     </nav>
   </header>
 
@@ -177,12 +194,12 @@
         <p><strong>📍 Location:</strong> Loakan Road, Baguio City</p>
         <p><strong>💰 Entrance Fee:</strong> Free</p>
         <p><strong>🕕 Best Time to Visit:</strong> Morning or late afternoon</p>
-        <p><strong>📌 Highlights:</strong> Pine forest trails • Historical sites • Tree Top Adventure • Dining areas</p>
+        <p><strong>📌 Highlights:</strong> Pine forest trails • Historical sites • Tree Top Adventure • Dining spots</p>
       </div>
     </div>
 
     <h1 class="title">Experience Adventure & Nature at Camp John Hay</h1>
-    <p class="subtitle">Relax, dine, and explore the pine forest sanctuary of Baguio's historic leisure park.</p>
+    <p class="subtitle">Relax, dine, and explore Baguio’s historic pine forest sanctuary.</p>
 
     <div class="grid">
       <!-- LEFT SIDE -->
@@ -190,9 +207,9 @@
         <div class="card">
           <h3>About Camp John Hay</h3>
           <p>
-            Camp John Hay is a historic leisure area in Baguio City known for its pine forests, gardens, hotels, and outdoor activities.
-            Originally established as a rest and recreation facility for the U.S. military, it now features picnic areas, nature trails, 
-            Eco Trail, Butterfly Sanctuary, The Manor hotel, and many dining spots.
+            Camp John Hay is a historic leisure destination known for its pine forests, hotels, nature trails, 
+            and adventure parks. Originally built as a rest and recreation facility for the U.S. military, 
+            it has become one of Baguio's most visited relaxation and adventure spots.
           </p>
         </div>
 
@@ -240,17 +257,17 @@
     closePopupBtn.onclick = () => popup.style.display = "none";
     popup.onclick = e => { if (e.target === popup) popup.style.display = "none"; };
 
-    // GIS MAP (Leaflet) - Camp John Hay
+    // GIS MAP - Camp John Hay
     const map = L.map('map').setView([16.397029, 120.611360], 16);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap'
-}).addTo(map);
+      attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
 
-   L.marker([16.397029, 120.611360])
-  .addTo(map)
-  .bindPopup("<b>Camp John Hay</b><br>Baguio City")
-  .openPopup();
+    L.marker([16.397029, 120.611360])
+      .addTo(map)
+      .bindPopup("<b>Camp John Hay</b><br>Baguio City")
+      .openPopup();
   </script>
 
 </body>

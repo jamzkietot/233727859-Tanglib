@@ -28,7 +28,16 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-header h2 {
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo-area img {
+  width: 40px;
+  height: 40px;
+}
+.logo-area h2 {
   margin: 0;
   font-size: 22px;
   font-weight: 600;
@@ -164,11 +173,17 @@ main {
 <body>
 
 <header>
-  <h2>Baguio Track</h2>
+  <div class="logo-area">
+    <img src="user_8801434.png" alt="Logo">
+    <h2>Baguio Track</h2>
+  </div>
+
   <nav>
     <a href="home.html">Home</a>
     <a href="tourist.html" class="active">Tourist Spots</a>
     <a href="jeepterminal.html">Terminals</a>
+    <a href="safety.html">Safety Tips</a>
+    <a href="about.html">About</a>
   </nav>
 </header>
 
