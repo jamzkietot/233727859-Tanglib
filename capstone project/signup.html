@@ -24,24 +24,43 @@
     </div>
   </section>
 
-  <script>
-    // ✅ Sign Up Functionality
+  <!-- ✅ Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } 
+      from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDPFnyJC66A-HQC3dKCQQ4SobAFRezx7fU",
+      authDomain: "baguio-track-c702f.firebaseapp.com",
+      projectId: "baguio-track-c702f",
+      storageBucket: "baguio-track-c702f.firebasestorage.app",
+      messagingSenderId: "27598181344",
+      appId: "1:27598181344:web:97bf7dd2a32dbfe14ed185"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // ✅ SIGN UP FUNCTION
     document.getElementById("signupForm").addEventListener("submit", function (e) {
       e.preventDefault();
 
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value.trim();
 
-      if (email && password) {
-        // Save the new account locally
-        localStorage.setItem("baguioTrackEmail", email);
-        localStorage.setItem("baguioTrackPassword", password);
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          alert("Account created successfully!");
 
-        alert("✅ Account created successfully! Redirecting to home page...");
-        window.location.href = "home.html"; // ✅ Go directly to home
-      } else {
-        alert("⚠️ Please fill out all fields.");
-      }
+          // Auto login
+          localStorage.setItem("isLoggedIn", "true");
+
+          window.location.href = "home.html";
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
     });
   </script>
 </body>
