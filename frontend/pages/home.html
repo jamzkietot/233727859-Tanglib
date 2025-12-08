@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baguio Track | Home</title>
+  <link rel="stylesheet" href="home.css">
+
+  <style>
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: none !important;
+      color: inherit;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- REDIRECT IF NOT LOGGED IN -->
+  <script>
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+      window.location.href = "index.html";
+    }
+  </script>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo-area" id="profileArea">
+      <img src="user_8801434.png" alt="User Profile" id="profileImage">
+      <h2 id="userName">Baguio Track</h2>
+      <input type="file" id="upload-photo" accept="image/*" style="display:none;">
+
+      <div class="profile-dropdown" id="profileDropdown">
+        <ul>
+          <li><a href="#" id="editProfile">✏️ Edit Profile</a></li>
+          <li><a href="#" id="settings">⚙️ Settings</a></li>
+          <li><a href="#" id="helpSupport">🆘 Help & Support</a></li>
+          <li><a href="#" id="logoutBtn">🚪 Logout</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="tourist.html">Tourist Spots</a>
+      <a href="jeepterminal.html">Terminals</a>
+      <a href="safety.html">Safety Tips</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 id="welcome-message">Welcome to Baguio Track</h1>
+      <p>Discover routes, fares, and destinations across Baguio City.</p>
+    </div>
+  </section>
+
+  <section class="features">
+    <a href="tourist.html" class="feature-card">
+      <img src="tourimage.jpg" alt="Tourist Icon">
+      <h3>Tourist Spots</h3>
+      <p>Must-see attractions around Baguio City.</p>
+    </a>
+
+    <a href="jeepterminal.html" class="feature-card">
+      <img src="jeepterminal.png" alt="Terminal Icon">
+      <h3>Jeepney Terminals</h3>
+      <p>Locate jeepney terminals and routes.</p>
+    </a>
+
+    <a href="safety.html" class="feature-card">
+      <img src="safety.jpg" alt="Safety Icon">
+      <h3>Safety & Contacts</h3>
+      <p>Emergency tips and help numbers.</p>
+    </a>
+  </section>
+
+  <footer>
+    <p>© 2025 Baguio Track | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // PROFILE INFO LOAD
+    const storedName = localStorage.getItem("baguioTrackUserName");
+    if (storedName) document.getElementById("userName").textContent = storedName;
+
+    const profileImage = document.getElementById("profileImage");
+    const savedImage = localStorage.getItem("baguioTrackProfileImage");
+    if (savedImage) profileImage.src = savedImage;
+
+    const dropdown = document.getElementById("profileDropdown");
+
+    document.getElementById("profileArea").addEventListener("click", (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle("active");
+    });
+
+    document.addEventListener("click", () => dropdown.classList.remove("active"));
+
+    // FIXED LOGOUT — DOES NOT DELETE ACCOUNT
+    document.getElementById("logoutBtn").addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("isLoggedIn");
+      alert("You have been logged out.");
+      window.location.href = "index.html";
+    });
+  </script>
+
+</body>
+</html>

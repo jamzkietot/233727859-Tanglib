@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baguio Track | Sign Up</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <section id="login-section">
+    <div class="login-container">
+      <img src="logo.jpg" alt="Baguio Track Logo" class="logo" />
+      <h1>Create Account</h1>
+      <form id="signupForm">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Create a password" required />
+
+        <button type="submit">Sign Up</button>
+        <p class="register-link">Already have an account? <a href="index.html">Sign In</a></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ✅ Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } 
+      from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDPFnyJC66A-HQC3dKCQQ4SobAFRezx7fU",
+      authDomain: "baguio-track-c702f.firebaseapp.com",
+      projectId: "baguio-track-c702f",
+      storageBucket: "baguio-track-c702f.firebasestorage.app",
+      messagingSenderId: "27598181344",
+      appId: "1:27598181344:web:97bf7dd2a32dbfe14ed185"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // ✅ SIGN UP FUNCTION
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          alert("Account created successfully!");
+
+          // Auto login
+          localStorage.setItem("isLoggedIn", "true");
+
+          window.location.href = "home.html";
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    });
+  </script>
+</body>
+</html>
