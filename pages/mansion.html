@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Mansion | Baguio Track</title>
+
+  <!-- LEAFLET GIS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <style>
+    /* GENERAL */
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f3ebdb;
+      color: #2c2c2c;
+    }
+    a { text-decoration: none; }
+
+    /* HEADER */
+    header {
+      background: #145532;
+      color: #fff;
+      padding: 12px 45px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h2 { margin: 0; font-size: 22px; font-weight: 600; }
+
+    nav a {
+      color: #fff;
+      margin-left: 25px;
+      font-weight: 500;
+    }
+
+    nav a:hover, nav a.active {
+      color: #d8c7a0;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1280px;
+      margin: 25px auto;
+      padding: 0 20px;
+    }
+
+    /* TOP GRID IMAGE + INFO */
+    .top-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 25px;
+      margin-bottom: 25px;
+    }
+    .hero-side-img {
+      width: 100%;
+      height: 330px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .hero-side-img:hover { transform: scale(1.03); }
+
+    /* LIGHTBOX */
+    #imgPopup {
+      display: none;
+      position: fixed;
+      z-index: 3000;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(3px);
+      justify-content: center;
+      align-items: center;
+    }
+    #imgPopup img {
+      width: 90%;
+      max-width: 900px;
+      border-radius: 12px;
+    }
+    #closePopup {
+      position: fixed;
+      top: 25px;
+      right: 40px;
+      font-size: 38px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* CARDS */
+    .card {
+      background: #ffffff;
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .card h3 { margin-top: 0; color: #154d2e; }
+
+    /* TITLES */
+    .title { font-size: 32px; color: #154d2e; font-weight: 700; margin-top: 10px; }
+    .subtitle { margin-top: -5px; font-size: 15px; color: #666; }
+
+    /* GIS MAP */
+    #map {
+      width: 100%;
+      height: 350px;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 14px;
+      background: #145532;
+      color: #fff;
+      border-radius: 6px;
+    }
+    .back:hover { background: #187842; }
+
+    @media (max-width: 900px) {
+      .grid, .top-grid { grid-template-columns: 1fr; }
+      .hero-side-img { height: 250px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo-area" style="display:flex;align-items:center;gap:12px;">
+    <img src="../assets/images/user_8801434.png" alt="User Profile" style="width:40px;height:40px;border-radius:50%;">
+    <h2 style="margin:0;font-size:22px;font-weight:600;">Baguio Track</h2>
+  </div>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="tourist.html" class="active">Tourist Spots</a>
+    <a href="jeepterminal.html">Terminals</a>
+    <a href="safety.html">Safety Tips</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="top-grid">
+    <img src="../assets/images/mansion.jpg" class="hero-side-img" id="openImage" alt="The Mansion Baguio">
+    <div class="card">
+      <h3>Visitor Information</h3>
+      <p><strong>📍 Location:</strong> Leonard Wood Road, Baguio City</p>
+      <p><strong>💰 Entrance Fee:</strong> Free (Photo area only)</p>
+      <p><strong>🕕 Best Time:</strong> Morning for cooler weather & clearer views</p>
+      <p><strong>📌 Highlights:</strong> Historical landmark • Grand gates • Scenic gardens • Presidential residence</p>
+    </div>
+  </div>
+
+  <h1 class="title">Explore The Mansion</h1>
+  <p class="subtitle">Discover the historic summer residence of the Philippine President.</p>
+
+  <div class="grid">
+
+    <!-- LEFT -->
+    <div>
+      <div class="card">
+        <h3>About The Mansion</h3>
+        <p>
+          <strong>The Mansion</strong> is one of Baguio’s most iconic landmarks.
+          Built in 1908, it serves as the official summer residence of the President of the Philippines.
+          With elegant Spanish-inspired architecture, wide gardens, and its famous grand gates,
+          it remains one of the most photographed landmarks in the city.
+        </p>
+      </div>
+
+      <div class="card" style="margin-top: 20px;">
+        <h3>Map Location</h3>
+        <p style="font-size:14px;color:#555;margin-bottom:10px;">
+          This interactive map shows the exact location of The Mansion.
+        </p>
+        <div id="map"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div>
+      <div class="card">
+        <h3>Nearby Places</h3>
+        <ul>
+          <li>🌲 Wright Park – Right across The Mansion</li>
+          <li>☕ Amare La Cucina – 2 mins drive</li>
+          <li>🏞 Camp John Hay – 5 mins drive</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="tourist.html" class="back">← Back to Tourist Spots</a>
+
+</main> 
+
+<!-- POPUP IMAGE -->
+<div id="imgPopup">
+  <span id="closePopup">&times;</span>
+  <img src="../assets/images/mansion.jpg" alt="The Mansion Baguio">
+</div>
+
+<!-- LEAFLET JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+// IMAGE POPUP
+const popup = document.getElementById("imgPopup");
+const openImg = document.getElementById("openImage");
+const closePopupBtn = document.getElementById("closePopup");
+
+openImg.onclick = () => popup.style.display = "flex";
+closePopupBtn.onclick = () => popup.style.display = "none";
+popup.onclick = e => { if(e.target === popup) popup.style.display = "none"; };
+
+// GIS MAP
+const map = L.map('map').setView([16.4128927, 120.6199063], 17);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap'
+}).addTo(map);
+
+L.marker([16.4128927, 120.6199063])
+  .addTo(map)
+  .bindPopup("<b>The Mansion</b><br>Baguio City")
+  .openPopup();
+</script>
+
+</body>
+</html>

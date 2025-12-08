@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baguio Track | Login</title>
+  <!-- Updated path for CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <!-- Login Section -->
+  <section id="login-section">
+    <div class="login-container">
+      <!-- Updated path for logo -->
+      <img src="../assets/images/logo.png" alt="Baguio Track Logo" class="logo" />
+      <h1>Baguio Track</h1>
+      <p>Access your account to explore routes and fares.</p>
+
+      <form id="loginForm">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required />
+
+        <button type="submit">Sign In</button>
+
+        <p class="register-link">Don't have an account? <a href="signup.html">Sign Up</a></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- 🔥 Firebase + Login Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword }
+      from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+
+    // Firebase config object (Make sure to use your own config from Firebase console)
+    const firebaseConfig = {
+      apiKey: "AIzaSyDPFnyJC66A-HQC3dKCQQ4SobAFRezx7fU",
+      authDomain: "baguio-track-c702f.firebaseapp.com",
+      projectId: "baguio-track-c702f",
+      storageBucket: "baguio-track-c702f.firebasestorage.app",
+      messagingSenderId: "27598181344",
+      appId: "1:27598181344:web:97bf7dd2a32dbfe14ed185"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // 🔐 LOGIN FUNCTION
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      // Firebase Sign In
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          alert("Login successful!");
+
+          // keep user logged in (this stores the login status in localStorage)
+          localStorage.setItem("isLoggedIn", "true");
+
+          // Redirect user to the home page after successful login
+          window.location.href = "home.html"; // Adjust to your home page URL
+        })
+        .catch((error) => {
+          // Firebase error messages are long; give clean message to user
+          alert("Invalid email or password.");
+          console.log("Firebase Error:", error.message);
+        });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Baguio Track | Tourist Spots</title>
+  <!-- Corrected path for CSS -->
+  <link rel="stylesheet" href="../assets/css/home.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f6f3ea;
+      color: #2c2c2c;
+    }
+
+    /* Header Styles */
+    header {
+      background: #145532; /* Green background */
+      color: #fff;
+      padding: 16px 45px; /* Adjusted for About page consistency */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px; /* Adjusted for About page consistency */
+    }
+
+    .logo-area img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    /* Navigation Styles */
+    nav {
+      display: flex;
+      gap: 30px; /* Adjusted for About page spacing */
+    }
+
+    nav a {
+      color: white;
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: #f2d7b5;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #9acf87, #6a9955);
+      padding: 40px 45px;
+      color: white;
+      text-align: center;
+      font-weight: 700;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+      margin-bottom: 30px;
+    }
+
+    .hero-content h1 {
+      margin: 0 0 10px 0;
+      font-size: 36px;
+    }
+
+    .hero-content p {
+      margin: 0 0 20px 0;
+      font-weight: 400;
+      font-size: 18px;
+    }
+
+    .back-btn {
+      background: #145532;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+      display: inline-block;
+    }
+
+    .back-btn:hover {
+      background: #1e7445;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 0 auto 60px auto;
+      padding: 0 30px;
+      background-color: #ffffff; /* White background for consistency */
+      border-radius: 12px; /* Smooth corners */
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Gallery Grid */
+    .tourist-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 20px 0;
+    }
+
+    /* Tourist Card Styles */
+    .tourist-card {
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+      color: #154d2e;
+      text-decoration: none;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .tourist-card:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .tourist-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .tourist-info {
+      padding: 20px;
+    }
+
+    .tourist-info h3 {
+      margin: 0 0 12px 0;
+      font-size: 22px;
+      font-weight: 700;
+      color: #2c5d3f;
+    }
+
+    .tourist-info p {
+      margin: 6px 0 0 0;
+      font-size: 15px;
+      line-height: 1.4;
+      font-weight: 500;
+      color: #000;
+    }
+
+    /* Footer */
+    footer {
+      background: #145532;
+      color: white;
+      padding: 16px 45px;
+      text-align: center;
+      font-weight: 500;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo-area">
+      <img src="../assets/images/user_8801434.png" alt="User Profile" />
+      <h2>Baguio Track</h2>
+    </div>
+
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="tourist.html" class="active">Tourist Spots</a> <!-- active class -->
+      <a href="jeepterminal.html">Terminals</a>
+      <a href="safety.html">Safety Tips</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Explore Baguio’s Top Tourist Spots</h1>
+      <p>Discover top destinations and hidden gems in the City of Pines.</p>
+      <a href="home.html" class="back-btn">← Back to Home</a>
+    </div>
+  </section>
+
+  <!-- TOURIST SPOTS -->
+  <main>
+    <section class="tourist-gallery">
+
+      <a href="botanical.html" class="tourist-card">
+        <img src="../assets/images/botanicalgarden.jpg" alt="Botanical Garden" />
+        <div class="tourist-info">
+          <h3>Botanical Garden</h3>
+          <p>A peaceful green sanctuary filled with plants and art.</p>
+        </div>
+      </a>
+
+      <a href="minesview.html" class="tourist-card">
+        <img src="../assets/images/Mines-View-Park.webp" alt="Mines View Park" />
+        <div class="tourist-info">
+          <h3>Mines View Park</h3>
+          <p>Breathtaking views of mountains and the old mining town.</p>
+        </div>
+      </a>
+
+      <a href="mansion.html" class="tourist-card">
+        <img src="../assets/images/the-mansion-in-baguio-city.jpg" alt="The Mansion" />
+        <div class="tourist-info">
+          <h3>The Mansion</h3>
+          <p>Official summer residence of the Philippine President.</p>
+        </div>
+      </a>
+
+      <a href="johnhay.html" class="tourist-card">
+        <img src="../assets/images/campjohnhay.jpg" alt="Camp John Hay" />
+        <div class="tourist-info">
+          <h3>Camp John Hay</h3>
+          <p>Pine forests, cafes, trails, and nature experiences.</p>
+        </div>
+      </a>
+
+      <a href="grotto.html" class="tourist-card">
+        <img src="../assets/images/grotto.jpg" alt="Lourdes Grotto" />
+        <div class="tourist-info">
+          <h3>Lourdes Grotto</h3>
+          <p>Statue of the Virgin Mary atop 252 steps with views.</p>
+        </div>
+      </a>
+
+      <a href="goodshepherd.html" class="tourist-card">
+        <img src="../assets/images/good.webp" alt="Good Shepherd Convent" />
+        <div class="tourist-info">
+          <h3>Good Shepherd Convent</h3>
+          <p>Home of famous Ube Jam with a scenic view.</p>
+        </div>
+      </a>
+
+      <a href="mirador.html" class="tourist-card">
+        <img src="../assets/images/park.jpg" alt="Mirador Park" />
+        <div class="tourist-info">
+          <h3>Mirador Heritage & Eco-Spirituality Park</h3>
+          <p>Torii gate, sunset views, and peaceful gardens.</p>
+        </div>
+      </a>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Baguio Track | All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>

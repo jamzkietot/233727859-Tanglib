@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camp John Hay | Baguio Track</title>
+
+  <!-- LEAFLET GIS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <style>
+    /* GENERAL */
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f3ebdb;
+      color: #2c2c2c;
+    }
+    a { text-decoration: none; }
+
+    /* HEADER */
+    header {
+      background: #145532;
+      color: #fff;
+      padding: 12px 45px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    header .logo-area img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    header h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+    }
+    nav a {
+      color: #fff;
+      margin-left: 25px;
+      font-weight: 500;
+    }
+    nav a:hover,
+    nav a.active {
+      color: #d8c7a0;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1280px;
+      margin: 25px auto;
+      padding: 0 20px;
+    }
+
+    /* TOP GRID IMAGE + INFO */
+    .top-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 25px;
+      margin-bottom: 25px;
+    }
+    .hero-side-img {
+      width: 100%;
+      height: 330px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .hero-side-img:hover { transform: scale(1.03); }
+
+    /* LIGHTBOX */
+    #imgPopup {
+      display: none;
+      position: fixed;
+      z-index: 3000;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(3px);
+      justify-content: center;
+      align-items: center;
+    }
+    #imgPopup img {
+      width: 90%;
+      max-width: 900px;
+      border-radius: 12px;
+      animation: zoomIn 0.3s ease;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    #closePopup {
+      position: fixed;
+      top: 25px;
+      right: 40px;
+      font-size: 38px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* CARDS */
+    .card {
+      background: #ffffff;
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #154d2e;
+    }
+
+    /* TITLES */
+    .title {
+      font-size: 32px;
+      color: #154d2e;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+    .subtitle {
+      margin-top: -5px;
+      font-size: 15px;
+      color: #666;
+    }
+
+    /* GIS MAP */
+    #map {
+      width: 100%;
+      height: 350px;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 14px;
+      background: #145532;
+      color: #fff;
+      border-radius: 6px;
+    }
+    .back:hover { background: #187842; }
+
+    @media (max-width: 900px) {
+      .grid, .top-grid { grid-template-columns: 1fr; }
+      .hero-side-img { height: 250px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- FIXED HEADER (same with all pages) -->
+  <header>
+    <div class="logo-area">
+      <img src="../assets/images/user_8801434.png" alt="User Profile" />
+      <h2>Baguio Track</h2>
+    </div>
+
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="tourist.html" class="active">Tourist Spots</a>
+      <a href="jeepterminal.html">Terminals</a>
+      <a href="safety.html">Safety Tips</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- TOP SECTION -->
+    <div class="top-grid">
+      <img src="../assets/images/camp.jpg" class="hero-side-img" id="openImage" alt="Camp John Hay">
+
+      <div class="card">
+        <h3>Visitor Information</h3>
+        <p><strong>📍 Location:</strong> Loakan Road, Baguio City</p>
+        <p><strong>💰 Entrance Fee:</strong> Free</p>
+        <p><strong>🕕 Best Time to Visit:</strong> Morning or late afternoon</p>
+        <p><strong>📌 Highlights:</strong> Pine forest trails • Historical sites • Tree Top Adventure • Dining spots</p>
+      </div>
+    </div>
+
+    <h1 class="title">Experience Adventure & Nature at Camp John Hay</h1>
+    <p class="subtitle">Relax, dine, and explore Baguio’s historic pine forest sanctuary.</p>
+
+    <div class="grid">
+      <!-- LEFT SIDE -->
+      <div>
+        <div class="card">
+          <h3>About Camp John Hay</h3>
+          <p>
+            Camp John Hay is a historic leisure destination known for its pine forests, hotels, nature trails, 
+            and adventure parks. Originally built as a rest and recreation facility for the U.S. military, 
+            it has become one of Baguio's most visited relaxation and adventure spots.
+          </p>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+          <h3>Map Location</h3>
+          <p style="font-size:14px;color:#555;margin-bottom:10px;">This interactive map shows the exact location of Camp John Hay.</p>
+          <div id="map"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div>
+        <div class="card">
+          <h3>Popular Attractions & Nearby Spots</h3>
+          <ul>
+            <li>🌲 Picnic areas & nature trails</li>
+            <li>☕ The Manor & Forest Lodge hotels</li>
+            <li>☁️ Eco Trail & Butterfly Sanctuary</li>
+            <li>🧗 Treetop Adventure Park</li>
+            <li>🛍️ Shopping & dining areas</li>
+            <li>🏌️ CJH Golf Course</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <a href="tourist.html" class="back">← Back to Tourist Spots</a>
+  </main>
+
+  <!-- POPUP IMAGE -->
+  <div id="imgPopup">
+    <span id="closePopup">&times;</span>
+    <img src="../assets/images/camp.jpg" alt="Camp John Hay">
+  </div>
+
+  <!-- LEAFLET GIS JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // IMAGE POPUP
+    const popup = document.getElementById("imgPopup");
+    const openImg = document.getElementById("openImage");
+    const closePopupBtn = document.getElementById("closePopup");
+
+    openImg.onclick = () => popup.style.display = "flex";
+    closePopupBtn.onclick = () => popup.style.display = "none";
+    popup.onclick = e => { if (e.target === popup) popup.style.display = "none"; };
+
+    // GIS MAP - Camp John Hay
+    const map = L.map('map').setView([16.397029, 120.611360], 16);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    L.marker([16.397029, 120.611360])
+      .addTo(map)
+      .bindPopup("<b>Camp John Hay</b><br>Baguio City")
+      .openPopup();
+  </script>
+
+</body>
+</html>
