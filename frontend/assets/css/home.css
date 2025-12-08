@@ -8,7 +8,7 @@
 
 body {
   background: 
-    url('123.png') no-repeat center center fixed,
+    url("../assets/images/123.png") no-repeat center center fixed, /* Updated path */
     linear-gradient(to top, #f2d7b5, #f8e8cd);
   background-size: cover;
   color: #154d2e;
@@ -169,13 +169,13 @@ nav a:hover {
   border-radius: 14px;
   background-color: transparent; 
   box-shadow: none; 
- transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .feature-card:hover {
   transform: translateY(-8px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Enhanced hover shadow */
 }
-
 
 .feature-card img {
   width: 160px;        

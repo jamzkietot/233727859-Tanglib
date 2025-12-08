@@ -9,7 +9,7 @@
 /* Background and centering */
 body {
   background: linear-gradient(to top, #f2d7b5, #f8e8cd);
-  background-image: url("123.png");
+  background-image: url("../assets/images/123.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center bottom;
@@ -21,7 +21,7 @@ body {
 
 /* Container */
 .login-container {
-  background: #f2d7b5(255, 255, 255, 0.92);
+  background: rgba(242, 215, 181, 0.92); /* Fixed background color */
   padding: 40px 35px;
   border-radius: 16px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
@@ -127,6 +127,7 @@ button:hover {
     font-size: 15px;
   }
 }
+
 /* Home Page Styles */
 .header {
   width: 100%;
@@ -180,7 +181,7 @@ button:hover {
 
 /* Hero Section */
 .hero {
-  background-image: url("123.png");
+  background-image: url("../assets/images/123.png");
   background-size: cover;
   background-position: center;
   height: 90vh;
