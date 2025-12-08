@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baguio Track | Sign Up</title>
+  <!-- Updated CSS Path -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <section id="login-section">
+    <div class="login-container">
+      <!-- Updated Image Path -->
+      <img src="../assets/images/logo.png" alt="Baguio Track Logo" class="logo" />
+      <h1>Create Account</h1>
+      <form id="signupForm">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Create a password" required />
+
+        <button type="submit">Sign Up</button>
+        <p class="register-link">Already have an account? <a href="../pages/index.html">Sign In</a></p>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    // ✅ Sign Up Functionality
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (email && password) {
+        // Save the new account locally
+        localStorage.setItem("baguioTrackEmail", email);
+        localStorage.setItem("baguioTrackPassword", password);
+
+        alert("✅ Account created successfully! Redirecting to home page...");
+        // Updated redirection path
+        window.location.href = "../pages/home.html"; // Go directly to home
+      } else {
+        alert("⚠️ Please fill out all fields.");
+      }
+    });
+  </script>
+</body>
+</html>
