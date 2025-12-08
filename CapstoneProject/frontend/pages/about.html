@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Baguio Track | About</title>
+  <link rel="stylesheet" href="home.css" />
+  <style>
+
+body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f6f3ea;
+      color: #2c2c2c;
+    }
+
+    header {
+      background: #145532;
+      color: #fff;
+      padding: 14px 45px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-area img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 25px;
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: #f2d7b5;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(135deg, #9acf87, #6a9955);
+      padding: 40px 45px;
+      color: white;
+      text-align: center;
+      font-weight: 700;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+      margin-bottom: 30px;
+    }
+
+    .hero-content h1 {
+      margin: 0 0 10px 0;
+      font-size: 36px;
+    }
+
+    .hero-content p {
+      margin: 0 0 20px 0;
+      font-weight: 400;
+      font-size: 18px;
+    }
+
+    .back-btn {
+      background: #145532;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+      display: inline-block;
+    }
+
+    .back-btn:hover {
+      background: #1e7445;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      max-width: 1000px;
+      margin: 0 auto 60px auto;
+      padding: 0 30px;
+      background: #f8f4e9;
+      border-radius: 16px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    /* ABOUT CARDS */
+    .about-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 20px 0;
+    }
+
+    .about-card {
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+      color: black;
+      text-decoration: none;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      padding: 25px 20px;
+    }
+
+    .about-card:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .about-card h3 {
+      margin: 0 0 12px 0;
+      font-size: 22px;
+      font-weight: 700;
+      color: #2c5d3f;
+    }
+
+    .about-card p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #145532;
+      color: white;
+      padding: 16px 45px;
+      text-align: center;
+      font-weight: 500;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo-area">
+      <img src="../assets/images/user_8801434.png" alt="User Profile" />
+      <h2>Baguio Track</h2>
+    </div>
+
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="tourist.html">Tourist Spots</a>
+      <a href="jeepterminal.html">Terminals</a>
+      <a href="safety.html">Safety Tips</a>
+      <a href="about.html" class="active">About</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>About Baguio Track</h1>
+      <p>Learn more about our mission and vision behind the platform.</p>
+      <a href="home.html" class="back-btn">← Back to Home</a>
+    </div>
+  </section>
+
+  <!-- ABOUT CARDS -->
+  <main>
+    <section class="about-gallery">
+
+      <!-- About Us -->
+      <div class="about-card">
+        <h3>About Us</h3>
+        <p>Baguio Track is your ultimate digital guide to exploring Baguio City. We provide tourists and locals with information on attractions, jeepney routes, restaurants, and cultural sites to make exploring the City of Pines easy and fun.</p>
+      </div>
+
+      <!-- Mission -->
+      <div class="about-card">
+        <h3>Our Mission</h3>
+        <p>To provide an easy-to-use, reliable, and up-to-date platform that helps visitors explore Baguio efficiently while promoting local culture and tourism.</p>
+      </div>
+
+      <!-- Vision -->
+      <div class="about-card">
+        <h3>Our Vision</h3>
+        <p>To become the go-to digital guide for Baguio City, empowering tourists and locals to discover hidden gems and navigate the city seamlessly.</p>
+      </div>
+
+
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Baguio Track | All Rights Reserved</p>
+  </footer>
+</body>
+</html>
