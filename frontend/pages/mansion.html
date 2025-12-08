@@ -1,137 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Mansion | Baguio Track</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Mansion | Baguio Track</title>
 
-<!-- LEAFLET GIS CSS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- LEAFLET GIS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
-<style>
-/* GENERAL */
-body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  background: #f3ebdb;
-  color: #2c2c2c;
-}
-a { text-decoration: none; }
+  <style>
+    /* GENERAL */
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f3ebdb;
+      color: #2c2c2c;
+    }
+    a { text-decoration: none; }
 
-/* HEADER */
-header {
-  background: #145532;
-  color: #fff;
-  padding: 12px 45px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-header h2 { margin: 0; font-size: 22px; font-weight: 600; }
-nav a { color: #fff; margin-left: 25px; font-weight: 500; }
-nav a:hover, nav a.active { color: #d8c7a0; }
+    /* HEADER */
+    header {
+      background: #145532;
+      color: #fff;
+      padding: 12px 45px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-/* MAIN */
-main {
-  max-width: 1280px;
-  margin: 25px auto;
-  padding: 0 20px;
-}
+    header h2 { margin: 0; font-size: 22px; font-weight: 600; }
 
-/* TOP GRID IMAGE + INFO */
-.top-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 25px;
-  margin-bottom: 25px;
-}
-.hero-side-img {
-  width: 100%;
-  height: 330px;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-.hero-side-img:hover { transform: scale(1.03); }
+    nav a {
+      color: #fff;
+      margin-left: 25px;
+      font-weight: 500;
+    }
 
-/* LIGHTBOX */
-#imgPopup {
-  display: none;
-  position: fixed;
-  z-index: 3000;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(3px);
-  justify-content: center;
-  align-items: center;
-}
-#imgPopup img {
-  width: 90%;
-  max-width: 900px;
-  border-radius: 12px;
-}
-#closePopup {
-  position: fixed;
-  top: 25px;
-  right: 40px;
-  font-size: 38px;
-  color: #fff;
-  cursor: pointer;
-  font-weight: bold;
-}
+    nav a:hover, nav a.active {
+      color: #d8c7a0;
+    }
 
-/* CARDS */
-.card {
-  background: #ffffff;
-  padding: 22px;
-  border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-}
-.card h3 { margin-top: 0; color: #154d2e; }
+    /* MAIN */
+    main {
+      max-width: 1280px;
+      margin: 25px auto;
+      padding: 0 20px;
+    }
 
-/* TITLES */
-.title { font-size: 32px; color: #154d2e; font-weight: 700; margin-top: 10px; }
-.subtitle { margin-top: -5px; font-size: 15px; color: #666; }
+    /* TOP GRID IMAGE + INFO */
+    .top-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 25px;
+      margin-bottom: 25px;
+    }
+    .hero-side-img {
+      width: 100%;
+      height: 330px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .hero-side-img:hover { transform: scale(1.03); }
 
-/* GIS MAP */
-#map {
-  width: 100%;
-  height: 350px;
-  border-radius: 10px;
-  margin-top: 15px;
-}
+    /* LIGHTBOX */
+    #imgPopup {
+      display: none;
+      position: fixed;
+      z-index: 3000;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(3px);
+      justify-content: center;
+      align-items: center;
+    }
+    #imgPopup img {
+      width: 90%;
+      max-width: 900px;
+      border-radius: 12px;
+    }
+    #closePopup {
+      position: fixed;
+      top: 25px;
+      right: 40px;
+      font-size: 38px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 25px;
-  margin-top: 25px;
-}
+    /* CARDS */
+    .card {
+      background: #ffffff;
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
 
-.back {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 14px;
-  background: #145532;
-  color: #fff;
-  border-radius: 6px;
-}
-.back:hover { background: #187842; }
+    .card h3 { margin-top: 0; color: #154d2e; }
 
-@media (max-width: 900px) {
-  .grid, .top-grid { grid-template-columns: 1fr; }
-  .hero-side-img { height: 250px; }
-}
-</style>
+    /* TITLES */
+    .title { font-size: 32px; color: #154d2e; font-weight: 700; margin-top: 10px; }
+    .subtitle { margin-top: -5px; font-size: 15px; color: #666; }
+
+    /* GIS MAP */
+    #map {
+      width: 100%;
+      height: 350px;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 14px;
+      background: #145532;
+      color: #fff;
+      border-radius: 6px;
+    }
+    .back:hover { background: #187842; }
+
+    @media (max-width: 900px) {
+      .grid, .top-grid { grid-template-columns: 1fr; }
+      .hero-side-img { height: 250px; }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-  <h2>Baguio Track</h2>
+
+  <div class="logo-area" style="display:flex;align-items:center;gap:12px;">
+    <img src="../assets/images/user_8801434.png" alt="User Profile" style="width:40px;height:40px;border-radius:50%;">
+    <h2 style="margin:0;font-size:22px;font-weight:600;">Baguio Track</h2>
+  </div>
+
   <nav>
     <a href="home.html">Home</a>
     <a href="tourist.html" class="active">Tourist Spots</a>
@@ -144,7 +159,7 @@ main {
 <main>
 
   <div class="top-grid">
-    <img src="mansion.jpg" class="hero-side-img" id="openImage" alt="The Mansion Baguio">
+    <img src="../assets/images/mansion.jpg" class="hero-side-img" id="openImage" alt="The Mansion Baguio">
     <div class="card">
       <h3>Visitor Information</h3>
       <p><strong>📍 Location:</strong> Leonard Wood Road, Baguio City</p>
@@ -196,12 +211,12 @@ main {
 
   <a href="tourist.html" class="back">← Back to Tourist Spots</a>
 
-</main>
+</main> 
 
 <!-- POPUP IMAGE -->
 <div id="imgPopup">
   <span id="closePopup">&times;</span>
-  <img src="mansion.jpg" alt="The Mansion Baguio">
+  <img src="../assets/images/mansion.jpg" alt="The Mansion Baguio">
 </div>
 
 <!-- LEAFLET JS -->

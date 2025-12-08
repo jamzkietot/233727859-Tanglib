@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Baguio Track | Home</title>
-  <link rel="stylesheet" href="home.css">
+  <!-- Updated path for CSS (assuming 'home.css' is in the assets/css folder) -->
+  <link rel="stylesheet" href="../assets/css/home.css">
 
   <style>
     a,
@@ -29,7 +30,8 @@
   <!-- HEADER -->
   <header>
     <div class="logo-area" id="profileArea">
-      <img src="user_8801434.png" alt="User Profile" id="profileImage">
+      <!-- Updated path for profile image -->
+      <img src="../assets/images/user_8801434.png" alt="User Profile" id="profileImage">
       <h2 id="userName">Baguio Track</h2>
       <input type="file" id="upload-photo" accept="image/*" style="display:none;">
 
@@ -60,21 +62,23 @@
     </div>
   </section>
 
+  <!-- FEATURES SECTION -->
   <section class="features">
     <a href="tourist.html" class="feature-card">
-      <img src="tourimage.jpg" alt="Tourist Icon">
+      <!-- Updated path for feature images -->
+      <img src="../assets/images/tourimage.jpg" alt="Tourist Icon">
       <h3>Tourist Spots</h3>
       <p>Must-see attractions around Baguio City.</p>
     </a>
 
     <a href="jeepterminal.html" class="feature-card">
-      <img src="jeepterminal.png" alt="Terminal Icon">
+      <img src="../assets/images/jeepterminal.png" alt="Terminal Icon">
       <h3>Jeepney Terminals</h3>
       <p>Locate jeepney terminals and routes.</p>
     </a>
 
     <a href="safety.html" class="feature-card">
-      <img src="safety.jpg" alt="Safety Icon">
+      <img src="../assets/images/safety.jpg" alt="Safety Icon">
       <h3>Safety & Contacts</h3>
       <p>Emergency tips and help numbers.</p>
     </a>
@@ -107,7 +111,7 @@
       e.preventDefault();
       localStorage.removeItem("isLoggedIn");
       alert("You have been logged out.");
-      window.location.href = "index.html";
+      window.location.href = "index.html";  // Redirect to login page
     });
   </script>
 
