@@ -8,12 +8,13 @@
 
 /* Background and centering */
 body {
-  background: linear-gradient(to top, #f2d7b5, #f8e8cd);
-  background-image: url("../assets/images/123.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center bottom;
+  margin: 0;
   min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+
+  background: url("../images/123.png") no-repeat center center fixed;
+  background-size: cover;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -262,3 +263,4 @@ footer {
   padding: 15px 0;
   font-size: 14px;
 }
+
