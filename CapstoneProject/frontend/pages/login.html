@@ -14,11 +14,11 @@
       <p>Access your account to explore routes and fares.</p>
 
       <form id="loginForm">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" placeholder="Enter your email" required />
+        <label>Email Address</label>
+        <input type="email" id="email" required />
 
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter your password" required />
+        <label>Password</label>
+        <input type="password" id="password" required />
 
         <button type="submit">Sign In</button>
 
@@ -30,26 +30,37 @@
     </div>
   </section>
 
-  <script>
-    document.getElementById("loginForm").addEventListener("submit", function (e) {
+  <!-- 🔥 FIREBASE LOGIN -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDPFnyJC66A-HQC3dKCQQ4SobAFRezx7fU",
+      authDomain: "baguio-track-c702f.firebaseapp.com",
+      projectId: "baguio-track-c702f",
+      storageBucket: "baguio-track-c702f.firebasestorage.app",
+      messagingSenderId: "27598181344",
+      appId: "1:27598181344:web:97bf7dd2a32dbfe14ed185"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
 
-      const savedEmail = localStorage.getItem("baguioTrackEmail");
-      const savedPassword = localStorage.getItem("baguioTrackPassword");
-
-      if (email === savedEmail && password === savedPassword) {
-        localStorage.setItem("isLoggedIn", "true");
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
         alert("✅ Login successful!");
         window.location.href = "home.html";
-      } else {
-        alert("❌ Invalid email or password.");
+      } catch (error) {
+        alert("❌ " + error.message);
       }
     });
   </script>
 </body>
 </html>
-
-
