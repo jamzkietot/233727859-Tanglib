@@ -190,6 +190,22 @@
       border-radius: 14px;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     }
+
+    /* Simple pulse for user marker (optional; you can style it later) */
+    .gpsPulse {
+      width: 14px;
+      height: 14px;
+      background: #1e90ff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 rgba(30, 144, 255, 0.6);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(30, 144, 255, 0.6); }
+      70% { box-shadow: 0 0 0 12px rgba(30, 144, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(30, 144, 255, 0); }
+    }
   </style>
 </head>
 
@@ -226,13 +242,14 @@
     <div class="terminal-gallery">
 
       <!-- F. Calderon Terminal Card -->
-      <a href="#" class="terminal-card" onclick="selectTerminal('F. Calderon')">
+      <a href="#" class="terminal-card" onclick="selectTerminal('F. Calderon Terminal')">
         <h3>📍 F. Calderon Terminal</h3>
         <p>Click to view directions</p>
         <div class="tourist-spots">
-          <div>Botanical Garden</div>
-          <div>Mines View Park</div>
-          <div>The Mansion</div>
+          <div>🔴 Botanical Garden </div>
+          <div>🟠 Mines View Park </div>
+          <div>🟡 The Mansion </div>
+          <div>🟤 Good Shepherd Convent </div>
         </div>
       </a>
 
@@ -241,7 +258,7 @@
         <h3>📍 Scout Barrio Terminal</h3>
         <p>Click to view directions</p>
         <div class="tourist-spots">
-          <div>Camp John Hay</div>
+          <div>🟢 Camp John Hay </div>
         </div>
       </a>
 
@@ -250,9 +267,8 @@
         <h3>📍 Kayang Street Terminal</h3>
         <p>Click to view directions</p>
         <div class="tourist-spots">
-          <div>Lourdes Grotto</div>
-          <div>Mirador Heritage Park</div>
-          <div>Good Shepherd Convent</div>
+          <div>⚫ Lourdes Grotto </div>
+          <div>🟣 Mirador Heritage Park </div>
         </div>
       </a>
 
@@ -268,28 +284,54 @@
   </main>
 
   <script>
-    // Terminal and Tourist Spot Data with Drop-off Notes
+    // --- COLORED ICON FACTORY ---
+    // Uses the free "leaflet-color-markers" icons.
+    function coloredIcon(color) {
+      return new L.Icon({
+        iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-${color}.png`,
+        shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
+    }
+
+    // Define icons that match your dot colors
+    const icons = {
+      red: coloredIcon("red"),
+      orange: coloredIcon("orange"),
+      yellow: coloredIcon("yellow"),
+      green: coloredIcon("green"),
+      violet: coloredIcon("violet"),
+      black: coloredIcon("black"),
+      // Brown isn't provided in that icon pack, so we use "grey" as closest.
+      // If you want TRUE brown, I can give you a custom brown icon.
+      brown: coloredIcon("grey")
+    };
+
+    // Terminal and Tourist Spot Data with Drop-off Notes + Icon color mapping
     const data = {
-      "F. Calderon": {
-        terminalCoords: [16.41, 120.6],
+      "F. Calderon Terminal": {
+        terminalCoords: [16.4119369,120.5970769],
         spots: [
-          { name: "Botanical Garden", coords: [16.41668, 120.61603], note: "Tell the driver: 'Botanical Garden, please.'" },
-          { name: "Mines View Park", coords: [16.42073, 120.62715], note: "Say: 'Mines View Park, please.'" },
-          { name: "The Mansion", coords: [16.41798, 120.61721], note: "Let the driver know: 'Drop me at The Mansion.'" }
+          { name: "Good Shepherd Convent", coords: [16.42233, 120.62613], note: "Let the driver know: 'Good Shepherd Convent.'", icon: icons.brown },
+          { name: "Botanical Garden", coords: [16.4150, 120.6130], note: "Take the jeepney with the route: BAGUIO PLAZA-MINES VIEW*V.V <br>Tell the driver: 'Botanical Garden, please.'", icon: icons.red },
+          { name: "Mines View Park", coords: [16.4197, 120.6274], note: "Take the jeepney with the route: BAGUIO PLAZA-MINES VIEW*V.V <br> Say: 'Mines View Park, please.'", icon: icons.orange },
+          { name: "The Mansion", coords: [16.4128927, 120.6199063], note: "Take the jeepney with the route: BAGUIO PLAZA-MINES VIEW*V.V <br> Let the driver know: 'Drop me at The Mansion.'", icon: icons.yellow }
         ],
       },
       "Scout Barrio Terminal": {
-        terminalCoords: [16.41075, 120.59830],
+        terminalCoords: [16.4130223,120.5943422,19],
         spots: [
-          { name: "Camp John Hay", coords: [16.39997, 120.60674], note: "Tell the driver: 'Camp John Hay, please.'" }
+          { name: "Camp John Hay", coords: [16.397029, 120.611360], note: "Take the jeepney with the route: BAGUIO PLAZA-SCOUT BARRIO*V.V <br>Tell the driver: 'Camp John Hay, please.'", icon: icons.green }
         ],
       },
       "Kayang Street Terminal": {
-        terminalCoords: [16.41455, 120.59428],
+        terminalCoords: [16.41455, 120.59389],
         spots: [
-          { name: "Lourdes Grotto", coords: [16.40847, 120.58535], note: "Say: 'Lourdes Grotto, please.'" },
-          { name: "Mirador Heritage Park", coords: [16.40986, 120.58712], note: "Tell the driver: 'Drop me at Mirador Heritage Park.'" },
-          { name: "Good Shepherd Convent", coords: [16.41542, 120.61559], note: "Let the driver know: 'Good Shepherd Convent.'" },
+          { name: "Lourdes Grotto", coords: [16.40847, 120.58535], note: "Take the jeepney with the route: BAGUIO PLAZA-LOURDES-DOMINICAN*V.V <br> Say: 'Lourdes Grotto, please.'", icon: icons.black },
+          { name: "Mirador Heritage Park", coords: [16.40986, 120.58712], note: "Take the jeepney with the route: BAGUIO PLAZA-LOURDES-DOMINICAN*V.V <br> Tell the driver: 'Drop me at Mirador Heritage Park.'", icon: icons.violet },
         ],
       },
     };
@@ -300,7 +342,6 @@
 
     let userMarker = null;
     let routeLayer = null;
-    let terminalMarker = null;
 
     // Enable Live Location
     document.getElementById("locateBtn").onclick = () => {
@@ -322,28 +363,39 @@
         }
 
         map.setView([latitude, longitude], 15);
-      }, err => {
+      }, () => {
         alert("Unable to retrieve location. Please enable location services.");
       });
     };
+
+    // Remove old markers/polylines BUT keep user marker
+    function clearMapExceptUser() {
+      map.eachLayer(layer => {
+        if (layer instanceof L.Polyline) map.removeLayer(layer);
+        if (layer instanceof L.Marker) {
+          // Keep the userMarker only
+          if (userMarker && layer === userMarker) return;
+          map.removeLayer(layer);
+        }
+      });
+    }
 
     // Select Terminal and Show Directions
     function selectTerminal(terminal) {
       const { terminalCoords, spots } = data[terminal];
 
+      // Require user location for routing
+      if (!userMarker) {
+        alert("Please enable location first.");
+        return;
+      }
+
+      clearMapExceptUser();
+
       map.setView(terminalCoords, 15);
 
-      // Remove previous markers and routes
-      map.eachLayer(layer => {
-        if (layer instanceof L.Marker) {
-          map.removeLayer(layer);
-        }
-        if (layer instanceof L.Polyline) {
-          map.removeLayer(layer);
-        }
-      });
-
-      terminalMarker = L.marker(terminalCoords)
+      // Terminal marker (default)
+      L.marker(terminalCoords)
         .addTo(map)
         .bindPopup(`<b>${terminal}</b>`)
         .openPopup();
@@ -353,19 +405,13 @@
         <p>Generating walking route from your location...</p>
       `;
 
-      if (!userMarker) {
-        alert("Please enable location first.");
-        return;
-      }
-
       drawRoute(userMarker.getLatLng(), terminalCoords);
 
-      // Add Drop-off Points
+      // Add Tourist Spot markers with matching colors
       spots.forEach(spot => {
-        L.marker(spot.coords)
+        L.marker(spot.coords, { icon: spot.icon })
           .addTo(map)
-          .bindPopup(`<b>${spot.name}</b><br>${spot.note}`)
-          .openPopup();
+          .bindPopup(`<b>${spot.name}</b><br>${spot.note}`);
       });
     }
 
